@@ -18,66 +18,66 @@ This project was inspired by my wife’s experience during her first days after 
 
 ## Key Features
 
-1. User Authentication and Role-Based Access:
+1. **User Authentication and Role-Based Access:**
 
 - User registration and login.
 - Role-based access control (e.g., regular users vs. admin).
 
-2. Search and Filter:
+2. **Search and Filter:**
 
 - Users can input their location, budget range, and number of people.
 - The application provides a list of places that fit the user's criteria.
 - Advanced filters like type of place (e.g., restaurant, park, museum), ratings, and distance.
 
-3. Favorites and Reviews:
+3. **Favorites and Reviews:**
 
 - Users can save their favorite places.
 - Users can write and read reviews, sharing personal experiences and tips.
 - Comments.
 
-4. Map Integration:
+4. **Map Integration:**
 
 - Interactive map displaying the locations of recommended places.
 - Map view to explore places without leaving the site.
 - User Experience (UX) and Accessibility:
 
-5. Intuitive and responsive design.
+5. **Intuitive and responsive design.**
 
 - Clear feedback on user actions (e.g., adding to favorites, submitting reviews).
 
 ## Implementation Details
 
-1. Frontend:
+1. **Frontend:**
 
 - HTML, CSS, Bootstrap for responsiveness and TypeScript for the responsive and interactive user interface.
 - Use Django templates to render dynamic content.
   Consider using a front-end framework/library like .
 
-2. Backend:
+2. **Backend:**
 
 - Python with Django for handling backend logic, authentication, and database management.
 
-3. Database:
+3. **Database:**
 
 - Relational database: PostgreSQL.
 - Django ORM to define models for users, places, reviews, favorites, etc.
 
-4. Map Integration:
+4. **Map Integration:**
 
 - Use a mapping API like Google Maps to display locations.
 - Integrate the map into Django templates.
 
-5. Testing:
+5. **Testing:**
 
 - Automated testing using Django's built-in testing framework.
 - Manual testing for both frontend and backend.
 - Testing for functionality, usability, and responsiveness.
 
-6. Version Control: Git, GitHub
+6. **Version Control:** Git, GitHub
 
-7. Deployment:
+7. **Deployment:**
 
-Deploy on a cloud platform like: Heroku.
+Deploy on a cloud platform Heroku.
 
 ## User Stories and Agile Methodology
 
@@ -86,11 +86,11 @@ Deploy on a cloud platform like: Heroku.
 
 ## Database Schema
 
-- User: Standard Django user model for authentication.
-- Place: Stores information about each place (name, location, description, etc.).
-- Review: Stores user reviews for places (comment, user, place).
-- Favorite: Stores user's favorite places.
+- **User:** Standard Django user model for authentication.
+- **Place:** Stores information about each place (name, location, description, etc.).
+- **Review:** Stores user reviews for places (comment, user, place).
+- **Favorite:** Stores user's favorite places.
 
 "Budget Explorer" is designed to be a user-centric application that not only helps users find affordable places to visit but also fosters a community where users can share their experiences and tips. By following the outlined features and implementation details using Django and TypeScript.
 
-Happy coding!
+**Happy coding!**
