@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 
 # Load environment variables from env.py
-import env # noqa: F401
+from env import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
