@@ -1,114 +1,96 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+## Budget Explorer
 
-Welcome USER_NAME,
+"Budget Explorer" is a full-stack web application designed to help users find and share budget-friendly places to visit within a specified budget. The application allows users to input their budget, location, and number of people, and it returns a list of recommended places that fit their criteria. Users can also save their favorite places, view them on a map, and share their experiences.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Table of Contents
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **May 28, 2024**
+1. [Project Overview](#project-overview)
+2. [Key Features](#key-features)
+3. [Implementation Details](#implementation-details)
+4. [User Stories and Agile Methodology](#user-stories-and-agile-methodology)
+5. [Database Schema](#database-schema)
 
-## Gitpod Reminders
+## Project Overview
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+Budget Explorer aims to help users discover affordable places based on their specific budget and location. Insp The application provides an interactive map, user reviews, and the ability to save favorite places. It is designed to be user-friendly and accessible, adhering to modern UX design principles.
 
-`python3 -m http.server`
+This project was inspired by my wife’s experience during her first days after moving to Switzerland. She faced the challenge of browsing the internet to find budget-friendly places to visit. Budget Explorer aims to alleviate this struggle for anyone moving to a new country or simply looking to explore their surroundings on a budget. We hope it helps users connect with their new environment and find joy in discovering affordable adventures.
 
-A blue button should appear to click: _Make Public_,
+## Key Features
 
-Another blue button should appear to click: _Open Browser_.
+1. User Authentication and Role-Based Access:
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+- User registration and login.
+- Role-based access control (e.g., regular users vs. admin).
 
-A blue button should appear to click: _Make Public_,
+2. Search and Filter:
 
-Another blue button should appear to click: _Open Browser_.
+- Users can input their location, budget range, and number of people.
+- The application provides a list of places that fit the user's criteria.
+- Advanced filters like type of place (e.g., restaurant, park, museum), ratings, and distance.
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+3. Favorites and Reviews:
 
-To log into the Heroku toolbelt CLI:
+- Users can save their favorite places.
+- Users can write and read reviews, sharing personal experiences and tips.
+- Comments.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+4. Map Integration:
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+- Interactive map displaying the locations of recommended places.
+- Map view to explore places without leaving the site.
+- User Experience (UX) and Accessibility:
 
-------
+5. Intuitive and responsive design.
 
-## Release History
+- Clear feedback on user actions (e.g., adding to favorites, submitting reviews).
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+## Implementation Details
 
-**May 28 2024:** Fix Mongo and Links installs
+1. Frontend:
 
-**April 26 2024:** Update node version to 16
+- HTML, CSS, Bootstrap for responsiveness and TypeScript for the responsive and interactive user interface.
+- Use Django templates to render dynamic content.
+  Consider using a front-end framework/library like .
 
-**September 20 2023:** Update Python version to 3.9.17.
+2. Backend:
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+- Python with Django for handling backend logic, authentication, and database management.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+3. Database:
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+- Relational database: PostgreSQL.
+- Django ORM to define models for users, places, reviews, favorites, etc.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+4. Map Integration:
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+- Use a mapping API like Google Maps to display locations.
+- Integrate the map into Django templates.
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+5. Testing:
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+- Automated testing using Django's built-in testing framework.
+- Manual testing for both frontend and backend.
+- Testing for functionality, usability, and responsiveness.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+6. Version Control: Git, GitHub
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+7. Deployment:
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+Deploy on a cloud platform like: Heroku.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+## User Stories and Agile Methodology
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+- Defined epics and broke them down into user stories and tasks.
+- Track project progress, GitHub Projects: <a href="https://github.com/users/CedricNtwari/projects/3/views/1" target="_blank">Project Board</a>
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+## Database Schema
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+- User: Standard Django user model for authentication.
+- Place: Stores information about each place (name, location, description, etc.).
+- Review: Stores user reviews for places (comment, user, place).
+- Favorite: Stores user's favorite places.
 
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
+"Budget Explorer" is designed to be a user-centric application that not only helps users find affordable places to visit but also fosters a community where users can share their experiences and tips. By following the outlined features and implementation details using Django and TypeScript.
 
 Happy coding!
