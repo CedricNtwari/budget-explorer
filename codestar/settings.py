@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+
+# Load environment variables from env.py
+import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +24,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$qto1-5guvys0obmr1ck6hzcu_e!mfiwqgfx9i%#%q_wlsk*-('
+SECRET_KEY = 'SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Get the ENVIRONMENT variable, default to 'production' if not set
+environment = os.environ.get('ENVIRONMENT', 'production')
+# Set DEBUG to True if the environment is development, otherwise set to False
+DEBUG = environment == 'development'
+
+print(f"DEBUG is set to {DEBUG}")
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.herokuapp.com']
 
