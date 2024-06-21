@@ -36,6 +36,29 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title  # String representation of the post
+    
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return f"Comment by {self.author} on {self.post}"
 
 
-# Create your models here.
+class Favorite(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="favorites")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="favorites")
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('post', 'user')
+        ordering = ['-created_on']
+
+    def __str__(self):
+        return f"Favorite {self.post} by {self.user}"
