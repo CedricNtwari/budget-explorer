@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from .models import Post, Comment, Favorite
 
 # Create your views here.
-def my_discover(request):
-  return HttpResponse("Hello, Discover!")
+class PostList(generic.ListView):
+    model = Post
+    template_name = 'discover/discover_list.html'

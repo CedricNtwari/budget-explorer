@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discover List</title>
+    <!-- Add CSS styles here if necessary -->
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}"></script>
+    <style>
+      .post-card {
+        border: 1px solid #ddd;
+        padding: 16px;
+        margin-bottom: 16px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .post-title {
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      .post-excerpt {
+        font-size: 16px;
+        color: #555;
+      }
+
+      .post-details {
+        font-size: 14px;
+        color: #777;
+      }
+
+      .map-container {
+        height: 200px;
+        margin-top: 16px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Discover List</h1>
+    <div id="posts-container">
+      {% for post in object_list %}
+      <div class="post-card">
+        <h2 class="post-title">{{ post.title }}</h2>
+        <p class="post-excerpt">{{ post.excerpt }}</p>
+        <p class="post-details">Author: {{ post.author }}</p>
+        <p class="post-details">Budget: {{ post.budget }} {{ post.get_currency_display }}</p>
+        <p class="post-details">Location: {{ post.location }}</p>
+        {% if post.nights %}
+        <p class="post-details">Nights: {{ post.nights }}</p>
+        {% endif %} {% if post.people %}
+        <p class="post-details">People: {{ post.people }}</p>
+        {% endif %}
+        <div id="map-{{ forloop.counter }}" class="map-container"></div>
+      </div>
+      {% endfor %}
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        {% for post in object_list %}
+          (function() {
+            var lat = {{ post.latitude }};
+            var lng = {{ post.longitude }};
+            var mapId = 'map-{{ forloop.counter }}';
+            var location = { lat: lat, lng: lng };
+            var map = new google.maps.Map(document.getElementById(mapId), {
+              zoom: 14,
+              center: location
+            });
+            var marker = new google.maps.Marker({
+              position: location,
+              map: map
+            });
+          })();
+        {% endfor %}
+      });
+    </script>
+  </body>
+</html>
