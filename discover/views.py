@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.conf import settings
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -32,3 +32,26 @@ class PostList(generic.ListView):
             return JsonResponse({'posts': post_html, 'has_next': posts.has_next()})
         else:
             return super().get(request, *args, **kwargs)
+        
+def post_detail(request, slug):
+    """
+    Display an individual :model:`discover.Post`.
+
+    **Context**
+
+    ``post``
+        An instance of :model:`discover.Post`.
+
+    **Template:**
+
+    :template:`blog/post_detail.html`
+    """
+
+    queryset = Post.objects.filter(status=1)
+    post = get_object_or_404(queryset, slug=slug)
+
+    return render(
+        request,
+        "discover/post_detail.html",
+        {"post": post},
+    )

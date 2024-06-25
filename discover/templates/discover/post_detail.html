@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="masthead">
+  <div class="container">
+    <div class="row g-0">
+      <div class="col-md-6 masthead-text">
+        <button onclick="history.back()" class="btn btn-secondary mb-3">Go Back</button>
+        <h1 class="post-title">{{ post.title }}</h1>
+        <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
+      </div>
+      <div class="d-none d-md-block col-md-6 masthead-image">
+        <img src="{% static 'images/travel.avif' %}" class="scale" alt="placeholder" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col card mb-4 mt-3 left top">
+      <div class="card-body">
+        <p class="card-text">{{ post.content | safe }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col card mb-4 mt-3 left top">
+      <div class="card-body">
+        <p class="card-details">Budget: {{ post.budget }} {{ post.get_currency_display }}</p>
+        <p class="card-details">Location: {{ post.location }}</p>
+        {% if post.nights %}
+        <p class="card-details">Nights: {{ post.nights }}</p>
+        {% endif %} {% if post.people %}
+        <p class="card-details">People: {{ post.people }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
