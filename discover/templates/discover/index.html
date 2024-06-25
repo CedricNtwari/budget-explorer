@@ -42,60 +42,12 @@
 </script>
 {% endblock extra_head %} {% block content %}
 <h1>Discover List</h1>
-<div id="posts-container">
-  {% for post in object_list %}
-  <div class="post-card">
-    <h2 class="post-title">{{ post.title }}</h2>
-    <p class="post-excerpt">{{ post.excerpt }}</p>
-    <p class="post-details">Author: {{ post.author }}</p>
-    <p class="post-details">Budget: {{ post.budget }} {{ post.get_currency_display }}</p>
-    <p class="post-details">Location: {{ post.location }}</p>
-    {% if post.nights %}
-    <p class="post-details">Nights: {{ post.nights }}</p>
-    {% endif %} {% if post.people %}
-    <p class="post-details">People: {{ post.people }}</p>
-    {% endif %}
-    <div id="map-{{ forloop.counter }}" class="map-container" style="height: 200px"></div>
-  </div>
-  {% endfor %}
+<div id="posts-container" data-google-maps-map-id="{{ google_maps_map_id }}">
+  {% include 'discover/post_list_partial.html' %}
+</div>
+<div class="text-center mt-4">
+  <button id="load-more" class="btn btn-primary">Load More</button>
 </div>
 {% endblock content %} {% block extra_script %}
-<script>
-  document.addEventListener('DOMContentLoaded', async function() {
-    // Ensure Google Maps API is loaded before using it
-    if (typeof google === 'undefined' || !google.maps) {
-      console.error('Google Maps API is not loaded.');
-      return;
-    }
-
-    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-
-    {% for post in object_list %}
-    (function() {
-      var lat = {{ post.latitude }};
-      var lng = {{ post.longitude }};
-      var mapId = 'map-{{ forloop.counter }}';
-      var location = { lat: lat, lng: lng };
-
-      // Ensure the map container element exists
-      var mapElement = document.getElementById(mapId);
-      if (!mapElement) {
-        console.error(`Map element with ID ${mapId} not found.`);
-        return;
-      }
-
-      var map = new google.maps.Map(mapElement, {
-        zoom: 14,
-        center: location,
-        mapId: '{{ google_maps_map_id }}'
-      });
-
-      new AdvancedMarkerElement({
-        position: location,
-        map: map
-      });
-    })();
-    {% endfor %}
-  });
-</script>
+<script src="{% static 'js/script.js' %}"></script>
 {% endblock extra_script %}
