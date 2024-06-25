@@ -1,0 +1,23 @@
+.post-card {
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.post-title {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+.post-excerpt {
+  font-size: 16px;
+  color: #555;
+}
+.post-details {
+  font-size: 14px;
+  color: #777;
+}
+.map-container {
+  height: 200px;
+  margin-top: 16px;
+}
