@@ -1,0 +1,101 @@
+{% extends 'base.html' %} {% load static %} {% block extra_head %}
+<!-- Google Maps API Initialization -->
+<script>
+  ;((g) => {
+    var h,
+      a,
+      k,
+      p = 'The Google Maps JavaScript API',
+      c = 'google',
+      l = 'importLibrary',
+      q = '__ib__',
+      m = document,
+      b = window
+    b = b[c] || (b[c] = {})
+    var d = b.maps || (b.maps = {}),
+      r = new Set(),
+      e = new URLSearchParams(),
+      u = () =>
+        h ||
+        (h = new Promise(async (f, n) => {
+          await (a = m.createElement('script'))
+          e.set('libraries', [...r] + '')
+          for (k in g)
+            e.set(
+              k.replace(/[A-Z]/g, (t) => '_' + t[0].toLowerCase()),
+              g[k],
+            )
+          e.set('callback', c + '.maps.' + q)
+          a.src = `https://maps.${c}apis.com/maps/api/js?` + e
+          d[q] = f
+          a.onerror = () => (h = n(Error(p + ' could not load.')))
+          a.nonce = m.querySelector('script[nonce]')?.nonce || ''
+          m.head.append(a)
+        }))
+    d[l]
+      ? console.warn(p + ' only loads once. Ignoring:', g)
+      : (d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)))
+  })({
+    key: '{{ google_maps_api_key }}',
+    v: 'weekly',
+  })
+</script>
+{% endblock extra_head %} {% block content %}
+<h1>Discover List</h1>
+<div id="posts-container">
+  {% for post in object_list %}
+  <div class="post-card">
+    <h2 class="post-title">{{ post.title }}</h2>
+    <p class="post-excerpt">{{ post.excerpt }}</p>
+    <p class="post-details">Author: {{ post.author }}</p>
+    <p class="post-details">Budget: {{ post.budget }} {{ post.get_currency_display }}</p>
+    <p class="post-details">Location: {{ post.location }}</p>
+    {% if post.nights %}
+    <p class="post-details">Nights: {{ post.nights }}</p>
+    {% endif %} {% if post.people %}
+    <p class="post-details">People: {{ post.people }}</p>
+    {% endif %}
+    <div id="map-{{ forloop.counter }}" class="map-container" style="height: 200px"></div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %} {% block extra_script %}
+<script>
+  document.addEventListener('DOMContentLoaded', async function() {
+    // Ensure Google Maps API is loaded before using it
+    if (typeof google === 'undefined' || !google.maps) {
+      console.error('Google Maps API is not loaded.');
+      return;
+    }
+
+    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+    {% for post in object_list %}
+    (function() {
+      var lat = {{ post.latitude }};
+      var lng = {{ post.longitude }};
+      var mapId = 'map-{{ forloop.counter }}';
+      var location = { lat: lat, lng: lng };
+
+      // Ensure the map container element exists
+      var mapElement = document.getElementById(mapId);
+      if (!mapElement) {
+        console.error(`Map element with ID ${mapId} not found.`);
+        return;
+      }
+
+      var map = new google.maps.Map(mapElement, {
+        zoom: 14,
+        center: location,
+        mapId: '{{ google_maps_map_id }}'
+      });
+
+      new AdvancedMarkerElement({
+        position: location,
+        map: map
+      });
+    })();
+    {% endfor %}
+  });
+</script>
+{% endblock extra_script %}
