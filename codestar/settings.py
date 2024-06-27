@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from django.contrib import messages
 
 # Check if the env.py file exists
 if os.path.isfile('env.py'):
@@ -97,6 +98,15 @@ TEMPLATES = [
         },
     },
 ]
+
+# Message settings
+MESSAGE_TAGS = {
+    messages.DEBUG: 'debug',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',
+}
 
 WSGI_APPLICATION = 'codestar.wsgi.application'
 

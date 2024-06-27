@@ -124,6 +124,14 @@ as login_url %} {% url 'account_signup' as signup_url %} {% url 'account_logout'
       </div>
     </nav>
 
+    {% if messages %}
+    <div class="container mt-3">
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
     <main class="flex-shrink-0 main-bg">
       {% if user.is_authenticated %}
       <p class="text-end m-3">You are logged in as {{ user }}</p>
