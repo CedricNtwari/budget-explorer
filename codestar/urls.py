@@ -16,11 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from allauth.account.views import confirm_email
+from .views import handler404, handler500
 
 urlpatterns = [
     path("about/", include("about.urls"), name="about-urls"),
     path("accounts/", include("allauth.urls")),
+    path('accounts/confirm-email/<str:key>/',
+         confirm_email, name='account_confirm_email'),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('', include("discover.urls"), name='discover-urls'),
 ]
+
+# Custom error handlers
+handler404 = 'codestar.views.handler404'
+handler500 = 'codestar.views.handler500'

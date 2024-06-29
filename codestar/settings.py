@@ -212,11 +212,6 @@ ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300  # seconds
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-MAILJET_API_KEY = os.getenv('MAILJET_API_KEY')
-MAILJET_API_SECRET = os.getenv('MAILJET_API_SECRET')
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
-
 # Email Backend settings for production (Mailjet)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'in-v3.mailjet.com'
