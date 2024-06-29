@@ -112,8 +112,10 @@ MESSAGE_TAGS = {
 # Set the redirect URI based on the environment
 if environment == 'production':
     GOOGLE_REDIRECT_URI = os.getenv('PROD_GOOGLE_REDIRECT_URI')
+    FACEBOOK_REDIRECT_URI = os.getenv('PROD_FACEBOOK_REDIRECT_URI')
 else:
     GOOGLE_REDIRECT_URI = os.getenv('DEV_GOOGLE_REDIRECT_URI')
+    FACEBOOK_REDIRECT_URI = os.getenv('DEV_FACEBOOK_REDIRECT_URI')
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -157,7 +159,7 @@ SOCIALACCOUNT_PROVIDERS = {
             'secret': os.getenv('FACEBOOK_APP_SECRET'),
             'key': ''
         },
-        'REDIRECT_URI': os.getenv('FACEBOOK_REDIRECT_URI'),
+        'REDIRECT_URI': FACEBOOK_REDIRECT_URI,
     }
 }
 
