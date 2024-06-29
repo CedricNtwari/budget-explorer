@@ -1,10 +1,5 @@
-{% load i18n %}
-{% autoescape off %}
-{% blocktrans with site_name=current_site.name %}Hello from {{ site_name }}!{% endblocktrans %}
-
-{% block content %}
-{% endblock content %}
-
-{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Thank you for using {{ site_name }}!
-{{ site_domain }}{% endblocktrans %}
-{% endautoescape %}
+{% load i18n %} {% load static %} {% blocktrans %}Hello from {{ current_site }}!{% endblocktrans %}
+{% blocktrans %}You're receiving this e-mail because you or someone else has registered an account
+with this e-mail address on {{ current_site }}.{% endblocktrans %} {% trans "To activate this
+account, please click the following link:" %} {{ activate_url }} {% blocktrans %}If you did not
+register, please ignore this email.{% endblocktrans %}
