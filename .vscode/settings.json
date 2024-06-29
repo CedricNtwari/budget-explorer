@@ -11,8 +11,40 @@
       "**/core.mongo*": true,
       "**/core.python*": true,
       "**/CVS": true
-   },
-   "files.autoSave": "off",
-   "workbench.colorTheme": "Visual Studio Dark",
-   "terminal.integrated.gpuAcceleration": "canvas",
+  },
+  "files.autoSave": "afterDelay",
+  "workbench.colorTheme": "Visual Studio Dark",
+  "terminal.integrated.gpuAcceleration": "canvas",
+  "python.pythonPath": "/Users/cedric/budget-explorer/venv/bin/python",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+      "source.fixAll": true
+  },
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintArgs": [
+      "--load-plugins=pylint_django"
+  ],
+  "python.linting.flake8Args": [
+      "--max-line-length=88"
+  ],
+  "files.associations": {
+      "**/templates/*.html": "django-html",
+      "**/templates/*": "django-txt",
+      "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+  },
+  "emmet.includeLanguages": {
+      "django-html": "html"
+  },
+  "eslint.options": {
+      "extensions": [".js", ".jsx", ".ts", ".tsx", ".html"]
+  },
+  "python.linting.djLintEnabled": true,
+  "python.linting.lintOnSave": true,
+  "python.linting.djLintArgs": [
+      "--django-template"
+  ],
+  "python.formatting.provider": "autopep8",
+  "python.formatting.autopep8Path": "/Users/cedric/budget-explorer/venv/bin/autopep8"
 }
