@@ -1,51 +1,37 @@
-{% load static %} {% url 'home' as home_url %} {% url 'about' as about_url %} {% url 'account_login'
-as login_url %} {% url 'account_signup' as signup_url %} {% url 'account_logout' as logout_url %}
+{% load static %}
+{% load i18n %}
+{% url 'home' as home_url %}
+{% url 'about' as about_url %}
+{% url 'account_login' as login_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_logout' as logout_url %}
+
 <!DOCTYPE html>
 <html class="h-100" lang="en">
   <head>
-    <title>Budget Explorer</title>
+    <title>{% block head_title %}Budget Explorer{% endblock head_title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Meta tags for search engine optimization -->
-    <meta
-      name="description"
-      content="Budget Explorer helps users find and share budget-friendly places to visit. Discover affordable adventures based on your budget, location, and preferences. Save favorites, read reviews, and explore places on an interactive map."
-    />
-    <meta
-      name="keywords"
-      content="Budget Explorer, budget-friendly places, travel on a budget, affordable adventures, budget travel, save money, interactive map, user reviews, favorite places, budget-friendly locations"
-    />
+    <meta name="description" content="Budget Explorer helps users find and share budget-friendly places to visit. Discover affordable adventures based on your budget, location, and preferences. Save favorites, read reviews, and explore places on an interactive map." />
+    <meta name="keywords" content="Budget Explorer, budget-friendly places, travel on a budget, affordable adventures, budget travel, save money, interactive map, user reviews, favorite places, budget-friendly locations" />
 
     <!-- Favicon & Tab Icon Links -->
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'icons/apple-touch-icon.png' %}" />
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'icons/favicon-32x32.png' %}" />
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'icons/favicon-16x16.png' %}" />
-    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
 
     <!-- Google Fonts CSS -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet" />
 
     <!-- Font Awesome CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
     <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
@@ -62,64 +48,31 @@ as login_url %} {% url 'account_signup' as signup_url %} {% url 'account_logout'
         <a class="navbar-brand" href="{% url 'home' %}">
           <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo" />
         </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarText"
-          aria-controls="navbarText"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a
-                class="nav-link {% if request.path == home_url %}active{% endif %}"
-                aria-current="page"
-                href="#"
-                >Home</a
-              >
+              <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
             </li>
             <li class="nav-item">
-              <a
-                class="nav-link {% if request.path == about_url %}active{%endif%}"
-                aria-current="page"
-                href="{% url 'about' %}"
-                >About</a
-              >
+              <a class="nav-link {% if request.path == about_url %}active{% endif %}" aria-current="page" href="{% url 'about' %}">About</a>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a
-                class="nav-link {% if request.path == logout_url %}active{% endif %}"
-                aria-current="page"
-                href="{% url 'account_logout' %}"
-                >Logout</a
-              >
+              <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
             </li>
             {% else %}
             <li class="nav-item">
-              <a
-                class="nav-link {% if request.path == signup_url %}active{% endif %}"
-                aria-current="page"
-                href="{% url 'account_signup' %}"
-                >Register</a
-              >
+              <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page" href="{% url 'account_signup' %}">Register</a>
             </li>
             <li class="nav-item">
-              <a
-                class="nav-link {% if request.path == login_url %}active{% endif %}"
-                aria-current="page"
-                href="{% url 'account_login' %}"
-                >Login</a
-              >
+              <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
             </li>
             {% endif %}
           </ul>
-          <span class="navbar-text text-muted"> adventures of of explorers </span>
+          <span class="navbar-text text-muted">adventures of explorers</span>
         </div>
       </div>
     </nav>
@@ -137,7 +90,8 @@ as login_url %} {% url 'account_signup' as signup_url %} {% url 'account_logout'
       <p class="text-end m-3">You are logged in as {{ user }}</p>
       {% else %}
       <p class="text-end m-3">You are not logged in</p>
-      {% endif %} {% block content %}
+      {% endif %}
+      {% block content %}
       <!-- Content Goes here -->
       {% endblock content %}
     </main>
@@ -148,42 +102,22 @@ as login_url %} {% url 'account_signup' as signup_url %} {% url 'account_logout'
         <p>Follow us on</p>
         <ul id="social-network" class="list-inline">
           <li class="list-inline-item">
-            <a
-              href="https://www.facebook.com/"
-              target="_blank"
-              rel="noopener"
-              aria-label="Visit our Facebook (opens in new tab)"
-            >
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Visit our Facebook (opens in new tab)">
               <i class="fa-brands fa-facebook"></i>
             </a>
           </li>
           <li class="list-inline-item">
-            <a
-              href="https://twitter.com/"
-              target="_blank"
-              rel="noopener"
-              aria-label="Visit our Twitter (opens in new tab)"
-            >
+            <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Visit our Twitter (opens in new tab)">
               <i class="fa-brands fa-square-twitter"></i>
             </a>
           </li>
           <li class="list-inline-item">
-            <a
-              href="https://www.youtube.com/"
-              target="_blank"
-              rel="noopener"
-              aria-label="Visit our Youtube (opens in new tab)"
-            >
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="Visit our Youtube (opens in new tab)">
               <i class="fa-brands fa-square-youtube"></i>
             </a>
           </li>
           <li class="list-inline-item">
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noopener"
-              aria-label="Visit our Instagram (opens in new tab)"
-            >
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Visit our Instagram (opens in new tab)">
               <i class="fa-brands fa-instagram"></i>
             </a>
           </li>
@@ -194,11 +128,7 @@ as login_url %} {% url 'account_signup' as signup_url %} {% url 'account_logout'
     </footer>
 
     <script src="{% static 'js/script.js' %}"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/c0241e8eb0.js" crossorigin="anonymous"></script>
 
     {% block extra_script %}
