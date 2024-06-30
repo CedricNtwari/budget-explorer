@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'discover',
     'about',
+    'contact',
 ]
 
 

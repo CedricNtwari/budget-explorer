@@ -4,7 +4,7 @@ from django.conf import settings
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import JsonResponse
 from django.template.loader import render_to_string
-from .models import Post, Comment, Favorite
+from .models import Post
 from django.contrib import messages
 from .forms import CommentForm
 
