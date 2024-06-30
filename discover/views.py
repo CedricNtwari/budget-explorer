@@ -5,6 +5,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from .models import Post, Comment, Favorite
+from django.contrib import messages
 from .forms import CommentForm
 
 
@@ -58,12 +59,16 @@ def post_detail(request, slug):
     comment_form = CommentForm()
 
     if request.method == "POST":
-    comment_form = CommentForm(data=request.POST)
-    if comment_form.is_valid():
-        comment = comment_form.save(commit=False)
-        comment.author = request.user
-        comment.post = post
-        comment.save()
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Comment submitted successfully.'
+            )
 
     return render(
         request,
