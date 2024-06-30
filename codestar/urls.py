@@ -22,8 +22,10 @@ from .views import handler404, handler500
 urlpatterns = [
     path("about/", include("about.urls"), name="about-urls"),
     path("accounts/", include("allauth.urls")),
-    path('accounts/confirm-email/<str:key>/', confirm_email, name='account_confirm_email'),
+    path('accounts/confirm-email/<str:key>/',
+         confirm_email, name='account_confirm_email'),
     path('admin/', admin.site.urls),
+    path('contact/', include('contact.urls')),
     path('summernote/', include('django_summernote.urls')),
     path('', include("discover.urls"), name='discover-urls'),
 ]
