@@ -240,6 +240,17 @@ STATICFILES_DIRS = [
 ]
 
 
+# CSRF settings
+CSRF_COOKIE_HTTPONLY = True
+CSRF_USE_SESSIONS = False
+
+# Trusted origins for CSRF
+CSRF_TRUSTED_ORIGINS = [
+    'https://budget-explorer-b9fdc935d3db.herokuapp.com',
+    'http://127.0.0.1:8000/',
+    'http://localhost:8000'
+]
+
 # Use certifi for SSL context
 ssl_context = ssl.create_default_context(cafile=certifi.where())
 
