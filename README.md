@@ -20,7 +20,7 @@ This project was inspired by my wife’s experience during her first days after 
 
 1. **User Authentication and Role-Based Access:**
 
-- User registration and login via email
+- User registration and login via email(Mailjet)
 - Login using social platforms like Google and Facebook.
 - Role-based access control (e.g., regular users vs. admin).
 
