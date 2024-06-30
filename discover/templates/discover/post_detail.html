@@ -62,6 +62,8 @@
           <div id="comment{{ comment.id }}">{{ comment.body | linebreaks }}</div>
           {% if not comment.approved and comment.author == user %}
           <p class="approval">This comment is awaiting approval</p>
+          {% endif %} {% if user.is_authenticated and comment.author == user %}
+          <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
           {% endif %}
         </div>
         <!-- Our for loop ends here -->
@@ -85,4 +87,6 @@
     </div>
   </div>
 </div>
-{% endblock content %}
+{% endblock content %} {% block extra_script %}
+<script src="{% static 'js/comment.js' %}"></script>
+{% endblock extra_script %}
