@@ -4,7 +4,8 @@ from django.conf import settings
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import JsonResponse
 from django.template.loader import render_to_string
-from .models import Post
+from .models import Post, Comment, Favorite
+
 
 class PostList(generic.ListView):
     model = Post
@@ -28,11 +29,13 @@ class PostList(generic.ListView):
                 posts = paginator.page(1)
             except EmptyPage:
                 posts = []
-            post_html = render_to_string('discover/post_list_partial.html', {'object_list': posts}, request=request)
+            post_html = render_to_string(
+                'discover/post_list_partial.html', {'object_list': posts}, request=request)
             return JsonResponse({'posts': post_html, 'has_next': posts.has_next()})
         else:
             return super().get(request, *args, **kwargs)
-        
+
+
 def post_detail(request, slug):
     """
     Display an individual :model:`discover.Post`.
@@ -49,9 +52,11 @@ def post_detail(request, slug):
 
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
+    comments = post.comments.all().order_by("-created_on")
+    comment_count = post.comments.filter(approved=True).count()
 
     return render(
         request,
         "discover/post_detail.html",
-        {"post": post},
+        {"post": post, "comments": comments, "comment_count": comment_count},
     )
