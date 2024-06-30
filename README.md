@@ -20,7 +20,7 @@ This project was inspired by my wife’s experience during her first days after 
 
 1. **User Authentication and Role-Based Access:**
 
-- User registration and login via email(Mailjet)
+- User registration and login via email(Mailjet https://app.mailjet.com/)
 - Login using social platforms like Google and Facebook.
 - Role-based access control (e.g., regular users vs. admin).
 
@@ -28,13 +28,11 @@ This project was inspired by my wife’s experience during her first days after 
 
 - Users can input their location, budget range, and number of people.
 - The application provides a list of places that fit the user's criteria.
-- Advanced filters like type of place (e.g., restaurant, park, museum), ratings, and distance.
+- Advanced filters like type of place or post title.
 
-3. **Favorites and Reviews:**
+3. **Favorites:**
 
 - Users can save their favorite places.
-- Users can write and read reviews, sharing personal experiences and tips.
-- Comments.
 
 4. **Map Integration:**
 
