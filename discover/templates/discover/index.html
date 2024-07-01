@@ -5,6 +5,11 @@
 </script>
 {% endblock extra_head %} {% block content %}
 <h1>Discover List</h1>
+{% if user.is_authenticated and user.is_staff %}
+<div class="container mt-5">
+  <a href="{% url 'add_post' %}" class="btn btn-primary">Add New Post</a>
+</div>
+{% endif %}
 <div id="posts-container" data-google-maps-map-id="{{ google_maps_map_id }}">
   {% include 'discover/post_list_partial.html' %}
 </div>

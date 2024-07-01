@@ -7,7 +7,7 @@ from django.template.loader import render_to_string
 from django.http import HttpResponseRedirect
 from .models import Post, Comment, Favorite
 from django.contrib import messages
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 
 
 class PostList(generic.ListView):
@@ -150,3 +150,23 @@ def user_profile(request):
     favorites = Favorite.objects.filter(
         user=request.user).order_by('-created_on')
     return render(request, 'discover/user_profile.html', {'user': user, 'comments': comments, 'favorites': favorites})
+
+
+def add_post(request):
+    if not request.user.is_staff:
+        messages.error(request, "You do not have permission to add a post.")
+        return redirect('home')
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.status = 1
+            post.save()
+            messages.success(request, 'Post added successfully!')
+            return redirect('home')
+    else:
+        form = PostForm()
+
+    return render(request, 'discover/add_post.html', {'form': form})
