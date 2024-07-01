@@ -72,6 +72,20 @@
       </div>
     </div>
   </div>
+
+  <!-- Display favorite button -->
+  <div>
+    {% if user.is_authenticated %}
+    <a href="{% url 'remove_favorite' post.slug %}" class="btn btn-danger">
+      <i class="fa fa-heart"></i> Unfavorite
+    </a>
+    <a href="{% url 'add_favorite' post.slug %}" class="btn btn-outline-danger">
+      <i class="fa fa-heart"></i> Favorite
+    </a>
+    {% else %}
+    <p>Please <a href="{% url 'account_login' %}">login</a> to favorite this post.</p>
+    {% endif %}
+  </div>
   <!-- Creating New Comments -->
   <div class="col-md-4 card mb-4 mt-3">
     <div class="card-body">

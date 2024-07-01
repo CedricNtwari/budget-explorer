@@ -1,5 +1,6 @@
 from . import views
 from django.urls import path
+from .views import add_favorite, remove_favorite
 
 urlpatterns = [
     path('', views.PostList.as_view(), name='home'),
@@ -8,4 +9,7 @@ urlpatterns = [
          views.comment_edit, name='comment_edit'),
     path('<slug:slug>/delete_comment/<int:comment_id>',
          views.comment_delete, name='comment_delete'),
+    path('post/<slug:slug>/favorite/', add_favorite, name='add_favorite'),
+    path('post/<slug:slug>/unfavorite/',
+         remove_favorite, name='remove_favorite'),
 ]

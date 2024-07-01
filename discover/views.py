@@ -1,11 +1,11 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic
 from django.conf import settings
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.http import HttpResponseRedirect
-from .models import Post, Comment
+from .models import Post, Comment, Favorite
 from django.contrib import messages
 from .forms import CommentForm
 
@@ -119,3 +119,25 @@ def comment_delete(request, slug, comment_id):
                              'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+def add_favorite(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    favorite, created = Favorite.objects.get_or_create(
+        user=request.user, post=post)
+    if created:
+        messages.success(request, 'Added to favorites')
+    else:
+        messages.info(request, 'Already in favorites')
+    return redirect('post_detail', slug=slug)
+
+
+def remove_favorite(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    favorite = Favorite.objects.filter(user=request.user, post=post)
+    if favorite.exists():
+        favorite.delete()
+        messages.success(request, 'Removed from favorites')
+    else:
+        messages.info(request, 'Not in favorites')
+    return redirect('post_detail', slug=slug)

@@ -4,29 +4,31 @@ document.addEventListener('DOMContentLoaded', () => {
     currentYearElement.textContent = new Date().getFullYear()
   }
 
-  // Integrat comment.js code
-  const editButtons = document.getElementsByClassName('btn-edit')
-  const commentText = document.getElementById('id_body')
-  const commentForm = document.getElementById('commentForm')
-  const submitButton = document.getElementById('submitButton')
-
-  /**
-   * Initializes edit functionality for the provided edit buttons.
-   *
-   * For each button in the `editButtons` collection:
-   * - Retrieves the associated comment's ID upon click.
-   * - Fetches the content of the corresponding comment.
-   * - Populates the `commentText` input/textarea with the comment's content for editing.
-   * - Updates the submit button's text to "Update".
-   * - Sets the form's action attribute to the `edit_comment/{commentId}` endpoint.
-   */
-  for (let button of editButtons) {
+  // Handle favorite/unfavorite click event
+  const favoriteButtons = document.querySelectorAll('.btn-favorite')
+  favoriteButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
-      let commentId = e.target.getAttribute('comment_id')
-      let commentContent = document.getElementById(`comment${commentId}`).innerText
-      commentText.value = commentContent
-      submitButton.innerText = 'Update'
-      commentForm.setAttribute('action', `edit_comment/${commentId}`)
+      e.preventDefault()
+      fetch(button.href, {
+        method: 'GET',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+          'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.status === 'favorited') {
+            button.classList.remove('btn-outline-danger')
+            button.classList.add('btn-danger')
+            button.innerHTML = '<i class="fa fa-heart"></i> Unfavorite'
+          } else if (data.status === 'unfavorited') {
+            button.classList.remove('btn-danger')
+            button.classList.add('btn-outline-danger')
+            button.innerHTML = '<i class="fa fa-heart"></i> Favorite'
+          }
+        })
+        .catch((error) => console.error('Error:', error))
     })
-  }
+  })
 })
