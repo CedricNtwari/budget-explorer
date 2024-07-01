@@ -141,3 +141,12 @@ def remove_favorite(request, slug):
     else:
         messages.info(request, 'Not in favorites')
     return redirect('post_detail', slug=slug)
+
+
+def user_profile(request):
+    user = request.user
+    comments = Comment.objects.filter(
+        author=request.user).order_by('-created_on')
+    favorites = Favorite.objects.filter(
+        user=request.user).order_by('-created_on')
+    return render(request, 'discover/user_profile.html', {'user': user, 'comments': comments, 'favorites': favorites})

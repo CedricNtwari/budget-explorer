@@ -1,9 +1,11 @@
 from . import views
 from django.urls import path
-from .views import add_favorite, remove_favorite
+from .views import add_favorite, remove_favorite, user_profile
 
 urlpatterns = [
     path('', views.PostList.as_view(), name='home'),
+    # Move this before the slug patterns
+    path('profile/', user_profile, name='user_profile'),
     path('<slug:slug>/', views.post_detail, name='post_detail'),
     path('<slug:slug>/edit_comment/<int:comment_id>',
          views.comment_edit, name='comment_edit'),

@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block content %}
+<div class="container mt-5">
+  <h1>User Profile</h1>
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Personal Information</h5>
+      <p class="card-text"><strong>Username:</strong> {{ user.username }}</p>
+      <p class="card-text"><strong>First name:</strong> {{ user.first_name }}</p>
+      <p class="card-text"><strong>Last name:</strong> {{ user.last_name }}</p>
+      <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+    </div>
+  </div>
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Favorites</h5>
+      <ul class="list-group">
+        {% for favorite in favorites %}
+        <li class="list-group-item">
+          <a href="{% url 'post_detail' favorite.post.slug %}">{{ favorite.post.title }}</a>
+        </li>
+        {% empty %}
+        <li class="list-group-item">You have no favorite posts.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Comments</h5>
+      <ul class="list-group">
+        {% for comment in comments %}
+        <li class="list-group-item">
+          <a href="{% url 'post_detail' comment.post.slug %}">{{ comment.post.title }}</a>:<br />
+          {{ comment.body }}<br />
+          <small class="text-muted">{{ comment.created_on|date:"F d, Y, g:i a" }}</small>
+        </li>
+        {% empty %}
+        <li class="list-group-item">You have no comments.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
