@@ -31,4 +31,16 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch((error) => console.error('Error:', error))
     })
   })
+
+  window.getLocation = function () {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        document.getElementById('latitude').value = position.coords.latitude
+        document.getElementById('longitude').value = position.coords.longitude
+        document.forms[0].submit()
+      })
+    } else {
+      alert('Geolocation is not supported by this browser.')
+    }
+  }
 })

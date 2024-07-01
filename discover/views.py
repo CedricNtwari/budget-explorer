@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect
 from .models import Post, Comment, Favorite, UserProfile
 from django.contrib import messages
 from .forms import CommentForm, PostForm, ProfilePictureForm
+from geopy.distance import geodesic
 
 
 class PostList(generic.ListView):
@@ -19,6 +20,10 @@ class PostList(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['google_maps_api_key'] = settings.GOOGLE_MAPS_API_KEY
         context['google_maps_map_id'] = settings.GOOGLE_MAPS_MAP_ID
+        context['title'] = self.request.GET.get('title', '')
+        context['location'] = self.request.GET.get('location', '')
+        context['latitude'] = self.request.GET.get('latitude', '')
+        context['longitude'] = self.request.GET.get('longitude', '')
         return context
 
     def get(self, request, *args, **kwargs):
@@ -37,6 +42,30 @@ class PostList(generic.ListView):
             return JsonResponse({'posts': post_html, 'has_next': posts.has_next()})
         else:
             return super().get(request, *args, **kwargs)
+
+    def get_queryset(self):
+        queryset = Post.objects.filter(status=1)
+        title = self.request.GET.get('title')
+        location = self.request.GET.get('location')
+        latitude = self.request.GET.get('latitude')
+        longitude = self.request.GET.get('longitude')
+
+        if title:
+            queryset = queryset.filter(title__icontains=title)
+        if location:
+            queryset = queryset.filter(location__icontains=location)
+        if latitude and longitude:
+            user_location = (float(latitude), float(longitude))
+            radius = 50  # Radius in kilometers
+            posts_within_radius = []
+            for post in queryset:
+                post_location = (post.latitude, post.longitude)
+                distance = geodesic(user_location, post_location).km
+                if distance <= radius:
+                    posts_within_radius.append(post.id)
+            queryset = queryset.filter(id__in=posts_within_radius)
+
+        return queryset
 
 
 def post_detail(request, slug):

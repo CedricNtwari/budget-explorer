@@ -5,6 +5,25 @@
 </script>
 {% endblock extra_head %} {% block content %}
 <h1>Discover List</h1>
+<form method="GET" action="{% url 'home' %}" class="mb-4">
+  <div class="form-row">
+    <div class="col-12 col-md-4 mb-2 mb-md-0">
+      <input type="text" name="title" class="form-control" placeholder="Search by title" />
+    </div>
+    <div class="col-12 col-md-4 mb-2 mb-md-0">
+      <input type="text" name="location" class="form-control" placeholder="Search by location" />
+    </div>
+    <div class="col-12 col-md-2 mb-2 mb-md-0">
+      <button type="button" class="btn btn-secondary w-100" onclick="getLocation()">Near Me</button>
+    </div>
+    <div class="col-12 col-md-2">
+      <button type="submit" class="btn btn-primary w-100">Search</button>
+    </div>
+  </div>
+  <input type="hidden" name="latitude" id="latitude" />
+  <input type="hidden" name="longitude" id="longitude" />
+</form>
+
 {% if user.is_authenticated and user.is_staff %}
 <div class="container mt-5">
   <a href="{% url 'add_post' %}" class="btn btn-primary">Add New Post</a>
