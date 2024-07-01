@@ -28,7 +28,10 @@ This project was inspired by my wife’s experience during her first days after 
 
 - Users can input their location, budget range, and number of people.
 - The application provides a list of places that fit the user's criteria.
-- Advanced filters like type of place or post title.
+- Advanced filters like type of place, post title, or location.
+- Users can filter posts to find them easily by title or location.
+- The posts listing page updates to display only the posts that match the selected filters.
+- "Near me" feature to filter places within a certain distance from the user's current location.
 
 3. **Favorites:**
 
