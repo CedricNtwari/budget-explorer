@@ -1,4 +1,4 @@
-from .models import Comment, Post
+from .models import Comment, Post, UserProfile
 from django import forms
 from django_summernote.widgets import SummernoteWidget
 
@@ -27,3 +27,9 @@ class PostForm(forms.ModelForm):
             'nights': forms.NumberInput(attrs={'placeholder': 'Enter the number of nights'}),
             'people': forms.NumberInput(attrs={'placeholder': 'Enter the number of people'}),
         }
+
+
+class ProfilePictureForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['profile_picture']

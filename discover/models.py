@@ -82,3 +82,12 @@ class Favorite(models.Model):
 
     def __str__(self):
         return f"Favorite {self.post} by {self.user}"
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name='profile')
+    profile_picture = CloudinaryField('image', blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.user.username} Profile'

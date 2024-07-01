@@ -5,9 +5,9 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.http import HttpResponseRedirect
-from .models import Post, Comment, Favorite
+from .models import Post, Comment, Favorite, UserProfile
 from django.contrib import messages
-from .forms import CommentForm, PostForm
+from .forms import CommentForm, PostForm, ProfilePictureForm
 
 
 class PostList(generic.ListView):
@@ -145,11 +145,21 @@ def remove_favorite(request, slug):
 
 def user_profile(request):
     user = request.user
-    comments = Comment.objects.filter(
-        author=request.user).order_by('-created_on')
-    favorites = Favorite.objects.filter(
-        user=request.user).order_by('-created_on')
-    return render(request, 'discover/user_profile.html', {'user': user, 'comments': comments, 'favorites': favorites})
+    profile, created = UserProfile.objects.get_or_create(user=user)
+
+    if request.method == 'POST':
+        form = ProfilePictureForm(
+            request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile picture updated successfully!')
+            return redirect('user_profile')
+    else:
+        form = ProfilePictureForm(instance=profile)
+
+    comments = Comment.objects.filter(author=user).order_by('-created_on')
+    favorites = Favorite.objects.filter(user=user).order_by('-created_on')
+    return render(request, 'discover/user_profile.html', {'user': user, 'comments': comments, 'favorites': favorites, 'form': form})
 
 
 def add_post(request):
