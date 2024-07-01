@@ -17,6 +17,7 @@ class PostList(generic.ListView):
     paginate_by = 6
 
     def get_context_data(self, **kwargs):
+        """Add context data for the template."""
         context = super().get_context_data(**kwargs)
         context['google_maps_api_key'] = settings.GOOGLE_MAPS_API_KEY
         context['google_maps_map_id'] = settings.GOOGLE_MAPS_MAP_ID
@@ -27,6 +28,7 @@ class PostList(generic.ListView):
         return context
 
     def get(self, request, *args, **kwargs):
+        """Handle GET requests, including AJAX requests for pagination."""
         if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
             page = request.GET.get('page')
             posts = Post.objects.all()
@@ -44,6 +46,7 @@ class PostList(generic.ListView):
             return super().get(request, *args, **kwargs)
 
     def get_queryset(self):
+        """Filter the queryset based on title, location, and proximity to the user's location."""
         queryset = Post.objects.filter(status=1)
         title = self.request.GET.get('title')
         location = self.request.GET.get('location')
@@ -110,7 +113,15 @@ def post_detail(request, slug):
 
 def comment_edit(request, slug, comment_id):
     """
-    view to edit comments
+    Edit an existing comment.
+
+    **Context**
+
+    ``comment_form``: Form for editing a comment.
+
+    **Template:**
+
+    :template:`discover/post_detail.html`
     """
     if request.method == "POST":
 
@@ -134,7 +145,15 @@ def comment_edit(request, slug, comment_id):
 
 def comment_delete(request, slug, comment_id):
     """
-    view to delete comment
+    Delete an existing comment.
+
+    **Context**
+
+    ``comment``: The comment to be deleted.
+
+    **Template:**
+
+    :template:`discover/post_detail.html`
     """
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
@@ -151,6 +170,17 @@ def comment_delete(request, slug, comment_id):
 
 
 def add_favorite(request, slug):
+    """
+    Add a post to the user's favorites.
+
+    **Context**
+
+    ``post``: The post to be added to favorites.
+
+    **Template:**
+
+    :template:`discover/post_detail.html`
+    """
     post = get_object_or_404(Post, slug=slug)
     favorite, created = Favorite.objects.get_or_create(
         user=request.user, post=post)
@@ -162,6 +192,17 @@ def add_favorite(request, slug):
 
 
 def remove_favorite(request, slug):
+    """
+    Remove a post from the user's favorites.
+
+    **Context**
+
+    ``post``: The post to be removed from favorites.
+
+    **Template:**
+
+    :template:`discover/post_detail.html`
+    """
     post = get_object_or_404(Post, slug=slug)
     favorite = Favorite.objects.filter(user=request.user, post=post)
     if favorite.exists():
@@ -173,6 +214,20 @@ def remove_favorite(request, slug):
 
 
 def user_profile(request):
+    """
+    Display the user's profile with options to update profile picture.
+
+    **Context**
+
+    ``user``: The currently logged-in user.
+    ``comments``: List of comments made by the user.
+    ``favorites``: List of posts favorited by the user.
+    ``form``: Form for updating profile picture.
+
+    **Template:**
+
+    :template:`discover/user_profile.html`
+    """
     user = request.user
     profile, created = UserProfile.objects.get_or_create(user=user)
 
@@ -192,6 +247,17 @@ def user_profile(request):
 
 
 def add_post(request):
+    """
+    Add a new blog post.
+
+    **Context**
+
+    ``form``: Form for adding a new post.
+
+    **Template:**
+
+    :template:`discover/add_post.html`
+    """
     if not request.user.is_staff:
         messages.error(request, "You do not have permission to add a post.")
         return redirect('home')
