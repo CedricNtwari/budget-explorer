@@ -81,6 +81,33 @@ This project was inspired by my wife’s experience during her first days after 
 
 Deploy on a cloud platform Heroku.
 
+### Example Blog Post Data
+
+To add a new blog post, you can use the following JSON structure as an example. This example showcases a post about visiting Kyoto, Japan:
+
+```json
+{
+    "model": "discover.post",
+    "pk": null,
+    "fields": {
+        "title": "Discovering the Wonders of Kyoto",
+        "slug": "discovering-the-wonders-of-kyoto",
+        "author": 3,
+        "content": "<p>Kyoto, the cultural heart of Japan, is renowned for its classical Buddhist temples, as well as gardens, imperial palaces, Shinto shrines, and traditional wooden houses. Here are some highlights to explore in this enchanting city.</p><p><b>Fushimi Inari Shrine</b></p><p>The Fushimi Inari Shrine is famous for its thousands of vermilion torii gates, which straddle a network of trails behind its main buildings. This shrine is dedicated to Inari, the Shinto god of rice, and offers a mesmerizing and spiritual experience.</p><p><b>Arashiyama Bamboo Grove</b></p><p>Walking through the Arashiyama Bamboo Grove feels like stepping into another world. The towering bamboo stalks provide a serene and magical atmosphere, perfect for a peaceful stroll.</p><p><b>Kinkaku-ji (Golden Pavilion)</b></p><p>Kinkaku-ji, or the Golden Pavilion, is one of Kyoto's most iconic landmarks. This Zen Buddhist temple is covered in gold leaf and reflects beautifully in the surrounding pond, making it a must-visit for anyone in Kyoto.</p>",
+        "created_on": "2023-09-12T14:20:45.238Z",
+        "status": 1,
+        "excerpt": "Experience the cultural richness of Kyoto, from the spiritual Fushimi Inari Shrine to the serene Arashiyama Bamboo Grove and the iconic Kinkaku-ji.",
+        "updated_on": "2023-09-25T11:30:56.217Z",
+        "budget": 400.0,
+        "currency": "JPY",
+        "location": "Kyoto, Japan",
+        "latitude": 35.0116,
+        "longitude": 135.7681,
+        "nights": 5,
+        "people": 2
+    }
+}
+
 ## User Stories and Agile Methodology
 
 - Defined epics and broke them down into user stories and tasks.
@@ -96,3 +123,4 @@ Deploy on a cloud platform Heroku.
 "Budget Explorer" is designed to be a user-centric application that not only helps users find affordable places to visit but also fosters a community where users can share their experiences and tips. By following the outlined features and implementation details using Django and TypeScript.
 
 **Happy coding!**
+```
