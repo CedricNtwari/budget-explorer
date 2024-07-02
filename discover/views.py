@@ -12,6 +12,17 @@ from geopy.distance import geodesic
 
 
 class PostList(generic.ListView):
+    """
+    Display a list of blog posts with pagination.
+
+    Inherits:
+        generic.ListView: The base class for creating list views.
+
+    Attributes:
+        model (Model): The model to query for the list view.
+        template_name (str): The template to render for the view.
+        paginate_by (int): The number of items to display per page.
+    """
     model = Post
     template_name = 'discover/index.html'
     paginate_by = 6

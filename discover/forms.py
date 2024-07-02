@@ -6,6 +6,9 @@ import os
 
 
 class CommentForm(forms.ModelForm):
+    """
+    A form for creating and updating comments on posts.
+    """
     class Meta:
         model = Comment
         fields = ('body',)
@@ -15,6 +18,11 @@ class CommentForm(forms.ModelForm):
 
 
 class PostForm(forms.ModelForm):
+    """
+    A form for creating and updating posts with fields for title, slug, content,
+    featured image, excerpt, budget, currency, location, latitude, longitude,
+    nights, and people.
+    """
     class Meta:
         model = Post
         fields = ['title', 'slug', 'content', 'featured_image', 'excerpt', 'budget',
@@ -34,6 +42,9 @@ class PostForm(forms.ModelForm):
         }
 
     def clean_title(self):
+        """
+        Validate that the title contains only words and not numbers.
+        """
         title = self.cleaned_data.get('title')
         if not all(x.isalpha() or x.isspace() for x in title):
             raise forms.ValidationError(
@@ -41,6 +52,9 @@ class PostForm(forms.ModelForm):
         return title
 
     def clean_budget(self):
+        """
+        Validate that the budget is a numeric value when the currency is Euro.
+        """
         budget = self.cleaned_data.get('budget')
         currency = self.cleaned_data.get('currency')
         if currency == 'EUR' and not isinstance(budget, (int, float)):
@@ -49,6 +63,9 @@ class PostForm(forms.ModelForm):
         return budget
 
     def clean_slug(self):
+        """
+        Validate that the slug is unique.
+        """
         slug = self.cleaned_data.get('slug')
         if Post.objects.filter(slug=slug).exists():
             raise forms.ValidationError(
@@ -56,6 +73,9 @@ class PostForm(forms.ModelForm):
         return slug
 
     def clean_latitude(self):
+        """
+        Validate that the latitude is a numeric value.
+        """
         latitude = self.cleaned_data.get('latitude')
         try:
             float(latitude)
@@ -65,6 +85,9 @@ class PostForm(forms.ModelForm):
         return latitude
 
     def clean_longitude(self):
+        """
+        Validate that the longitude is a numeric value.
+        """
         longitude = self.cleaned_data.get('longitude')
         try:
             float(longitude)
@@ -75,6 +98,9 @@ class PostForm(forms.ModelForm):
 
 
 class ProfilePictureForm(forms.ModelForm):
+    """
+    A form for uploading and updating a user's profile picture.
+    """
     class Meta:
         model = UserProfile
         fields = ['profile_picture']
@@ -83,6 +109,9 @@ class ProfilePictureForm(forms.ModelForm):
         }
 
     def clean_profile_picture(self):
+        """
+        Validate that the uploaded file is an image with a valid extension.
+        """
         picture = self.cleaned_data.get('profile_picture')
         if picture:
             ext = os.path.splitext(picture.name)[1].lower()

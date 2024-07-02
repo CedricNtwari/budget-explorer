@@ -15,34 +15,48 @@ CURRENCY_CHOICES = (
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=200, unique=True)  # Title of the post
-    # URL-friendly identifier
+    """
+    Represents a blog post in the application.
+
+    Attributes:
+        title (str): The title of the post.
+        slug (str): URL-friendly identifier for the post.
+        author (User): The author of the post.
+        featured_image (CloudinaryField): The featured image for the post.
+        content (str): The full content of the post.
+        created_on (datetime): Timestamp when the post was created.
+        updated_on (datetime): Timestamp when the post was last updated.
+        status (int): The status of the post (draft or published).
+        excerpt (str): A short description or summary of the post.
+        budget (Decimal): The budget for the place.
+        currency (str): The currency of the budget.
+        location (str): The location of the place.
+        latitude (Decimal): Latitude for the map.
+        longitude (Decimal): Longitude for the map.
+        nights (int): Number of nights (optional).
+        people (int): Number of people (optional).
+    """
+    title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="blog_posts")  # Author of the post
+        User, on_delete=models.CASCADE, related_name="blog_posts")
     featured_image = CloudinaryField(
-        'image', default='placeholder')  # Backup image for the post
-    content = models.TextField()  # Full content of the post
-    # Timestamp when the post was created
+        'image', default='placeholder')
+    content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    # Timestamp when the post was last updated
     updated_on = models.DateTimeField(auto_now=True)
-    # Status of the post (e.g., draft, published)
     status = models.IntegerField(choices=STATUS, default=0)
-    # Short description or summary of the post
     excerpt = models.TextField(blank=True)
     budget = models.DecimalField(
-        max_digits=10, decimal_places=2)  # Budget for the place
+        max_digits=10, decimal_places=2)
     currency = models.CharField(
-        max_length=3, choices=CURRENCY_CHOICES, default='EUR')  # Currency of the budget
-    location = models.CharField(max_length=255)  # Location of the place
+        max_length=3, choices=CURRENCY_CHOICES, default='EUR')
+    location = models.CharField(max_length=255)
     latitude = models.DecimalField(
-        max_digits=9, decimal_places=6)  # Latitude for the map
+        max_digits=9, decimal_places=6)
     longitude = models.DecimalField(
-        max_digits=9, decimal_places=6)  # Longitude for the map
-    # Number of nights (optional)
+        max_digits=9, decimal_places=6)
     nights = models.IntegerField(blank=True, null=True)
-    # Number of people (optional)
     people = models.IntegerField(blank=True, null=True)
 
     class Meta:
@@ -54,6 +68,16 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    """
+    Represents a comment on a blog post.
+
+    Attributes:
+        post (Post): The post that the comment is associated with.
+        author (User): The author of the comment.
+        body (str): The content of the comment.
+        created_on (datetime): Timestamp when the comment was created.
+        approved (bool): Whether the comment is approved or not.
+    """
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(
@@ -70,6 +94,14 @@ class Comment(models.Model):
 
 
 class Favorite(models.Model):
+    """
+    Represents a favorite post for a user.
+
+    Attributes:
+        post (Post): The post that is marked as favorite.
+        user (User): The user who marked the post as favorite.
+        created_on (datetime): Timestamp when the favorite was created.
+    """
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="favorites")
     user = models.ForeignKey(
@@ -85,6 +117,13 @@ class Favorite(models.Model):
 
 
 class UserProfile(models.Model):
+    """
+    Represents a user's profile.
+
+    Attributes:
+        user (User): The user associated with the profile.
+        profile_picture (CloudinaryField): The profile picture of the user.
+    """
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='profile')
     profile_picture = CloudinaryField('image', blank=True, null=True)

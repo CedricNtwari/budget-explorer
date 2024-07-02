@@ -6,6 +6,20 @@ import os
 
 
 def contact(request):
+    """
+    Handle the contact form submission and display.
+
+    If the request method is POST, validate the form and send an email with the
+    provided contact information. On successful submission, redirect back to the 
+    contact page with a success message. If the request method is GET, display 
+    the empty contact form.
+
+    Args:
+    - request: The HTTP request object.
+
+    Returns:
+    - HttpResponse: The rendered contact form page or a redirect to the contact page.
+    """
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
