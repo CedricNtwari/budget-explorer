@@ -42,7 +42,7 @@ SECRET_KEY = 'SECRET_KEY'
 # Get the ENVIRONMENT variable, default to 'production' if not set
 environment = os.environ.get('ENVIRONMENT', 'production')
 # Set DEBUG to True if the environment is development, otherwise set to False
-DEBUG = environment == 'development'
+DEBUG = True
 
 print(f"DEBUG is set to {DEBUG}")
 
