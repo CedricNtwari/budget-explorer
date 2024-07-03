@@ -36,6 +36,11 @@ class PostList(generic.ListView):
         context['location'] = self.request.GET.get('location', '')
         context['latitude'] = self.request.GET.get('latitude', '')
         context['longitude'] = self.request.GET.get('longitude', '')
+        if self.request.user.is_authenticated:
+            context['favorites'] = Favorite.objects.filter(
+                user=self.request.user)
+            context['comments'] = Comment.objects.filter(
+                author=self.request.user)
         return context
 
     def get(self, request, *args, **kwargs):

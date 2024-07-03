@@ -8,13 +8,13 @@
   <div class="row justify-content-center">
     <!-- Main content -->
     <div class="col-12 col-lg-8">
-      <h1>Discover List</h1>
+      <h1>Discover your next Destination</h1>
       <form method="GET" action="{% url 'home' %}" class="mb-4">
-        <div class="form-row">
-          <div class="col-12 col-md-4 mb-2 mb-md-0">
+        <div class="row gx-2 gy-2">
+          <div class="col-12 col-md-4">
             <input type="text" name="title" class="form-control" placeholder="Search by title" />
           </div>
-          <div class="col-12 col-md-4 mb-2 mb-md-0">
+          <div class="col-12 col-md-4">
             <input
               type="text"
               name="location"
@@ -22,18 +22,18 @@
               placeholder="Search by location"
             />
           </div>
-          <div class="col-12 col-md-2 mb-2 mb-md-0">
+          <div class="col-6 col-md-2">
             <input type="number" name="min_budget" class="form-control" placeholder="Min budget" />
           </div>
-          <div class="col-12 col-md-2 mb-2 mb-md-0">
+          <div class="col-6 col-md-2">
             <input type="number" name="max_budget" class="form-control" placeholder="Max budget" />
           </div>
-          <div class="col-12 col-md-2 mb-2 mb-md-0">
+          <div class="col-6 col-md-2">
             <button type="button" class="btn btn-secondary w-100" onclick="getLocation()">
               Near Me
             </button>
           </div>
-          <div class="col-12 col-md-2">
+          <div class="col-6 col-md-2">
             <button type="submit" class="btn btn-primary w-100">Search</button>
           </div>
         </div>

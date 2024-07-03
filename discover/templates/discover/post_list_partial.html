@@ -3,14 +3,21 @@
   <div class="post-card">
     <h2 class="post-title">{{ post.title }}</h2>
     <p class="post-excerpt">{{ post.excerpt }}</p>
-    <p class="post-details">Author: {{ post.author }}</p>
-    <p class="post-details">Budget: {{ post.budget }} {{ post.get_currency_display }}</p>
-    <p class="post-details">Location: {{ post.location }}</p>
-    {% if post.nights %}
-    <p class="post-details">Nights: {{ post.nights }}</p>
-    {% endif %} {% if post.people %}
-    <p class="post-details">People: {{ post.people }}</p>
-    {% endif %}
+
+    <div class="post-details-row">
+      <div class="col-12 col-md-6">
+        <p class="post-details">Budget: {{ post.budget }} {{ post.get_currency_display }}</p>
+        <p class="post-details">Location: {{ post.location }}</p>
+      </div>
+      <div class="col-12 col-md-6">
+        {% if post.nights %}
+        <p class="post-details">Nights: {{ post.nights }}</p>
+        {% endif %} {% if post.people %}
+        <p class="post-details">People: {{ post.people }}</p>
+        {% endif %}
+      </div>
+    </div>
+    <p class="post-subtitle-details">Posted by {{ post.author }} | {{ post.created_on }}</p>
     <div
       id="map-{{ forloop.counter }}"
       class="map-container"

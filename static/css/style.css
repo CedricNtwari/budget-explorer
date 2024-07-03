@@ -32,12 +32,30 @@
   width: auto;
 }
 
+h1,
+h2,
+h3 {
+  padding-bottom: 10px;
+  color: #188181;
+}
+
+.nav-item a {
+  color: #188181 !important;
+}
+
+.nav-item a:active,
+.nav-item a:focus {
+  text-decoration: underline;
+  text-decoration-color: #fac34f !important;
+}
+
 .errorlist {
   color: red;
 }
 
 body {
   background-color: #f4f2ee;
+  font-family: "Heebo", sans-serif;
 }
 
 .container {
@@ -97,9 +115,29 @@ body {
   text-align: left;
 }
 
+.list-group-item a {
+  text-decoration: none;
+  color: #188181;
+}
+
+.list-group-item a:hover {
+  color: #fac34f;
+}
+
+@media screen and (min-width: 768px) {
+  .user-profile {
+    display: flex;
+  }
+
+  .post-details-row {
+    display: flex;
+  }
+}
+
 .btn {
   margin: 0.4rem 0;
   background-color: #fac34f !important;
+  color: #188181;
   font-size: 1rem;
   flex-grow: 1;
   max-width: none;
@@ -110,7 +148,7 @@ body {
   border-radius: 35px;
 }
 .btn:hover {
-  color: #188181;
+  color: #fff;
 }
 
 .brand {
@@ -229,6 +267,14 @@ body {
   color: lightgray;
 }
 
+.post-subtitle-details {
+  color: #188181;
+}
+
+.post-details {
+  color: #188181 !important;
+}
+
 .btn-signup,
 .btn-edit {
   background-color: #188181;
@@ -279,13 +325,18 @@ body {
 }
 
 footer {
-  color: #fff;
+  color: #fac34f;
   background-color: #188181;
 }
 
 footer .container {
   padding-top: 10px;
   display: block;
+}
+
+.g-2,
+.gy-2 {
+  background-color: #eaeaea;
 }
 
 #social-network li a {
