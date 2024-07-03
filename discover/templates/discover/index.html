@@ -4,38 +4,103 @@
   const googleMapsMapId = '{{ google_maps_map_id }}'
 </script>
 {% endblock extra_head %} {% block content %}
-<h1>Discover List</h1>
-<form method="GET" action="{% url 'home' %}" class="mb-4">
-  <div class="form-row">
-    <div class="col-12 col-md-4 mb-2 mb-md-0">
-      <input type="text" name="title" class="form-control" placeholder="Search by title" />
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <!-- Main content -->
+    <div class="col-12 col-lg-8">
+      <h1>Discover List</h1>
+      <form method="GET" action="{% url 'home' %}" class="mb-4">
+        <div class="form-row">
+          <div class="col-12 col-md-4 mb-2 mb-md-0">
+            <input type="text" name="title" class="form-control" placeholder="Search by title" />
+          </div>
+          <div class="col-12 col-md-4 mb-2 mb-md-0">
+            <input
+              type="text"
+              name="location"
+              class="form-control"
+              placeholder="Search by location"
+            />
+          </div>
+          <div class="col-12 col-md-2 mb-2 mb-md-0">
+            <button type="button" class="btn btn-secondary w-100" onclick="getLocation()">
+              Near Me
+            </button>
+          </div>
+          <div class="col-12 col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Search</button>
+          </div>
+        </div>
+        <input type="hidden" name="latitude" id="latitude" />
+        <input type="hidden" name="longitude" id="longitude" />
+      </form>
+
+      {% if user.is_authenticated and user.is_staff %}
+      <div class="container mt-5">
+        <a href="{% url 'add_post' %}" class="btn btn-primary newpost">Add New Post</a>
+      </div>
+      {% else %}
+      <div class="container mt-5">
+        <p class="text-muted">Log in to add a new post.</p>
+      </div>
+      {% endif %}
+
+      <div id="posts-container" data-google-maps-map-id="{{ google_maps_map_id }}">
+        {% include 'discover/post_list_partial.html' %}
+      </div>
+
+      <div class="text-center mt-4">
+        <button id="load-more" class="btn btn-primary">Load More</button>
+      </div>
     </div>
-    <div class="col-12 col-md-4 mb-2 mb-md-0">
-      <input type="text" name="location" class="form-control" placeholder="Search by location" />
-    </div>
-    <div class="col-12 col-md-2 mb-2 mb-md-0">
-      <button type="button" class="btn btn-secondary w-100" onclick="getLocation()">Near Me</button>
-    </div>
-    <div class="col-12 col-md-2">
-      <button type="submit" class="btn btn-primary w-100">Search</button>
+
+    <!-- Sidebar: visible only on larger screens -->
+    <div class="col-lg-4 d-none d-lg-block">
+      <div class="user-profile-card">
+        <div class="profile-picture mb-3">
+          {% if user.profile.profile_picture %}
+          <img
+            src="{{ user.profile.profile_picture.url }}"
+            alt="{{ user.username }}"
+            class="img-thumbnail rounded-circle"
+            style="width: 150px; height: 150px"
+          />
+          {% else %}
+          <p>No profile picture uploaded.</p>
+          {% endif %}
+        </div>
+        <h3>{{ user.username }}</h3>
+        <p>{{ user.email }}</p>
+        <div class="favorites">
+          <h4>Favorites</h4>
+          <ul class="list-group">
+            {% for favorite in favorites %}
+            <li class="list-group-item">
+              <a href="{% url 'post_detail' favorite.post.slug %}">{{ favorite.post.title }}</a>
+            </li>
+            {% empty %}
+            <li class="list-group-item">You have no favorite posts.</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="comments">
+          <h4>Comments</h4>
+          <ul class="list-group">
+            {% for comment in comments %}
+            <li class="list-group-item">
+              <a href="{% url 'post_detail' comment.post.slug %}">{{ comment.post.title }}</a
+              >:<br />
+              {{ comment.body }}<br />
+              <small class="text-muted">{{ comment.created_on|date:"F d, Y, g:i a" }}</small>
+            </li>
+            {% empty %}
+            <li class="list-group-item">You have no comments.</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
-  <input type="hidden" name="latitude" id="latitude" />
-  <input type="hidden" name="longitude" id="longitude" />
-</form>
-<div class="container mt-5">
-  {% if user.is_authenticated and user.is_staff %}
-  <a href="{% url 'add_post' %}" class="btn btn-primary">Add New Post</a>
-  {% else %}
-  <p class="text-muted">Log in to add a new post</p>
-  <a href="{% url 'account_login' %}" class="btn btn-secondary">Login</a>
-  {% endif %}
-</div>
-<div id="posts-container" data-google-maps-map-id="{{ google_maps_map_id }}">
-  {% include 'discover/post_list_partial.html' %}
-</div>
-<div class="text-center mt-4">
-  <button id="load-more" class="btn btn-primary">Load More</button>
 </div>
 {% endblock content %} {% block extra_script %}
 <script src="{% static 'js/script.js' %}"></script>
