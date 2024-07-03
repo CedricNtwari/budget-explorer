@@ -63,6 +63,8 @@ class PostList(generic.ListView):
         location = self.request.GET.get('location')
         latitude = self.request.GET.get('latitude')
         longitude = self.request.GET.get('longitude')
+        min_budget = self.request.GET.get('min_budget')
+        max_budget = self.request.GET.get('max_budget')
 
         if title:
             queryset = queryset.filter(title__icontains=title)
@@ -78,6 +80,10 @@ class PostList(generic.ListView):
                 if distance <= radius:
                     posts_within_radius.append(post.id)
             queryset = queryset.filter(id__in=posts_within_radius)
+        if min_budget:
+            queryset = queryset.filter(budget__gte=min_budget)
+        if max_budget:
+            queryset = queryset.filter(budget__lte=max_budget)
 
         return queryset
 

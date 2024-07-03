@@ -184,6 +184,14 @@ body {
   padding: 10px;
 }
 
+.form-row .form-control {
+  margin-bottom: 10px;
+}
+
+.form-row .btn {
+  margin-top: 10px;
+}
+
 .masthead-image {
   position: relative;
   overflow: hidden;
