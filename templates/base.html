@@ -65,6 +65,7 @@
 
   <body class="d-flex flex-column h-100 main-bg">
     <!-- Navigation -->
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}">
@@ -82,7 +83,8 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <span class="navbar-text text-muted me-auto">Adventures of Explorers</span>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a
                 class="nav-link {% if request.path == about_url %}active{% endif %}"
@@ -135,7 +137,6 @@
             </li>
             {% endif %}
           </ul>
-          <span class="navbar-text text-muted">adventures of explorers</span>
         </div>
       </div>
     </nav>

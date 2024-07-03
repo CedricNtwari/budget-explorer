@@ -23,12 +23,14 @@
   <input type="hidden" name="latitude" id="latitude" />
   <input type="hidden" name="longitude" id="longitude" />
 </form>
-
-{% if user.is_authenticated and user.is_staff %}
 <div class="container mt-5">
+  {% if user.is_authenticated and user.is_staff %}
   <a href="{% url 'add_post' %}" class="btn btn-primary">Add New Post</a>
+  {% else %}
+  <p class="text-muted">Log in to add a new post</p>
+  <a href="{% url 'account_login' %}" class="btn btn-secondary">Login</a>
+  {% endif %}
 </div>
-{% endif %}
 <div id="posts-container" data-google-maps-map-id="{{ google_maps_map_id }}">
   {% include 'discover/post_list_partial.html' %}
 </div>
