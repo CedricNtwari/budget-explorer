@@ -45,6 +45,10 @@ h3:hover {
   color: #fac34f;
 }
 
+.text-muted {
+  color: #212529 !important;
+}
+
 .nav-item a {
   color: #188181 !important;
 }
