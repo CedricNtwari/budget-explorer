@@ -7,7 +7,7 @@ from django.template.loader import render_to_string
 from django.http import HttpResponseRedirect
 from .models import Post, Comment, Favorite, UserProfile
 from django.contrib import messages
-from .forms import CommentForm, PostForm, ProfilePictureForm
+from .forms import CommentForm, PostForm, ProfilePictureForm, CustomUserChangeForm
 from geopy.distance import geodesic
 
 
@@ -297,3 +297,16 @@ def add_post(request):
         form = PostForm()
 
     return render(request, 'discover/add_post.html', {'form': form})
+
+
+def update_user_info(request):
+    user = request.user
+    if request.method == 'POST':
+        user_form = CustomUserChangeForm(request.POST, instance=user)
+        if user_form.is_valid():
+            user_form.save()
+            messages.success(request, 'Your profile was updated successfully!')
+            return redirect('user_profile')
+    else:
+        user_form = CustomUserChangeForm(instance=user)
+    return render(request, 'discover/update_user_info.html', {'user_form': user_form})

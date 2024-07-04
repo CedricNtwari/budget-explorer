@@ -9,6 +9,7 @@
         <p class="card-text"><strong>First name:</strong> {{ user.first_name }}</p>
         <p class="card-text"><strong>Last name:</strong> {{ user.last_name }}</p>
         <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+        <a href="{% url 'update_user_info' %}" class="btn btn-secondary mt-3">Update Information</a>
         <div class="profile-picture mb-3">
           {% if user.profile.profile_picture %}
           <img
@@ -30,7 +31,7 @@
 
     <div class="card mb-4">
       <div class="card-body">
-        <h5 class="card-title">Favorites</h5>
+        <h5 class="card-title">Your Favorites</h5>
         <ul class="list-group">
           {% for favorite in favorites %}
           <li class="list-group-item">
@@ -44,7 +45,7 @@
     </div>
     <div class="card mb-4">
       <div class="card-body">
-        <h5 class="card-title">Comments</h5>
+        <h5 class="card-title">Your Comments</h5>
         <ul class="list-group">
           {% for comment in comments %}
           <li class="list-group-item">

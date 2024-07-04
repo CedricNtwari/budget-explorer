@@ -1,8 +1,11 @@
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django import forms
 from .models import Comment, Post, UserProfile
 from django_summernote.widgets import SummernoteWidget
 from django.core.validators import MinValueValidator, MaxValueValidator, ValidationError
 import os
+from django.contrib.auth.models import User
 
 
 class CommentForm(forms.ModelForm):
@@ -120,3 +123,9 @@ class ProfilePictureForm(forms.ModelForm):
                 raise forms.ValidationError(
                     "Unsupported file extension. Allowed extensions are: .jpg, .jpeg, .png, .webp")
         return picture
+
+
+class CustomUserChangeForm(UserChangeForm):
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email')
