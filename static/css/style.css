@@ -242,6 +242,11 @@ body {
   height: 33vh;
 }
 
+.alert {
+  background-color: #188181;
+  color: #fac34f;
+}
+
 .masthead-text {
   background-color: #445261;
   color: white;

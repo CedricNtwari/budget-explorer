@@ -10,6 +10,9 @@
         <p class="card-text"><strong>Last name:</strong> {{ user.last_name }}</p>
         <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
         <a href="{% url 'update_user_info' %}" class="btn btn-secondary mt-3">Update Information</a>
+        <a href="{% url 'account_reset_password' %}" class="btn btn-secondary mt-3"
+          >Change Password</a
+        >
         <div class="profile-picture mb-3">
           {% if user.profile.profile_picture %}
           <img
