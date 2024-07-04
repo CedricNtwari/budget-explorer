@@ -12,8 +12,6 @@
 
 ## Project Overview
 
-Budget Explorer aims to help users discover affordable places based on their specific budget and location. Insp The application provides an interactive map, user reviews, and the ability to save favorite places. It is designed to be user-friendly and accessible, adhering to modern UX design principles.
-
 This project was inspired by my wife’s experience during her first days after moving to Switzerland. She faced the challenge of browsing the internet to find budget-friendly places to visit. Budget Explorer aims to alleviate this struggle for anyone moving to a new country or simply looking to explore their surroundings on a budget. We hope it helps users connect with their new environment and find joy in discovering affordable adventures.
 
 ## Key Features
@@ -24,7 +22,10 @@ This project was inspired by my wife’s experience during her first days after 
 - Login using social platforms like Google and Facebook.
 - Role-based access control (e.g., regular users vs. admin).
 
-2. **Search and Filter:**
+![User Authentication](/static/images/authentication-.png)
+![User Authentication](/static/images/authentication..png)
+
+2. **Search, Filter and near me:**
 
 - Users can input their location, budget range, and number of people.
 - The application provides a list of places that fit the user's criteria.
@@ -33,19 +34,28 @@ This project was inspired by my wife’s experience during her first days after 
 - The posts listing page updates to display only the posts that match the selected filters.
 - "Near me" feature to filter places within a certain distance from the user's current location.
 
+![Search, Filter and near me](/static/images/search.png)
+
 3. **Favorites:**
 
 - Users can save their favorite places.
+
+![Favorites](/static/images/favorite.png)
 
 4. **Map Integration:**
 
 - Interactive map displaying the locations of recommended places.
 - Map view to explore places without leaving the site.
-- User Experience (UX) and Accessibility:
+- User Experience (UX) and Accessibility.
+
+![Map Integration](/static/images/map.png)
 
 5. **Intuitive and responsive design.**
 
-- Clear feedback on user actions (e.g., adding to favorites, submitting reviews).
+- Clear feedback on user actions (e.g., adding to favorites, leave a comment, users can update their infos).
+
+![Intuitive and responsive design](/static/images/Intuitive.png)
+![users can update their infos](/static/images/user.png)
 
 ## Implementation Details
 
@@ -80,17 +90,6 @@ This project was inspired by my wife’s experience during her first days after 
 7. **Deployment:**
 
 Deploy on a cloud platform Heroku. https://budget-explorer-b9fdc935d3db.herokuapp.com/
-
-### Validator Testing
-
-- HTML
-  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/#textarea)
-- CSS
-  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
-- Accessibility:
-  - No errors were found when passing through web dev tool lighthouse
-- JavaScript:
-  - No errors were found when passing through the official [(Jshint) validator](https://jshint.com/)
 
 ### Example Blog Post Data for testing purposes
 
@@ -138,6 +137,47 @@ A textual representation of the ERD
 A textual representation of the flowchart
 
 ![A description of the typical user flow through the app](/static/images/flowchart.png)
+
+### Validator Testing
+
+- HTML
+  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/#textarea)
+- CSS
+  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
+- Accessibility:
+  - No errors were found when passing through web dev tool lighthouse
+- JavaScript:
+  - No errors were found when passing through the official [(Jshint) validator](https://jshint.com/)
+- **Lighthouse**:
+
+  - Tested with [Lighthouse](https://developers.google.com/web/tools/lighthouse) for performance, accessibility, best practices, and SEO.
+
+  ![Lighthouse](/static/images/mobile.png)
+  ![Lighthouse](/static/images/desktop.png)
+
+### HTTPS Warnings Explanation
+
+- **Best Practices**:
+
+  - **Trust and Safety**: The Lighthouse report showed 7 insecure requests related to Cloudinary URLs.
+  - **Reason**: Cloudinary hosts our media files, and during development, some images might be uploaded via HTTP. These requests are automatically upgraded to HTTPS by Cloudinary. However, Lighthouse still flags these as issues.
+  - **Production Environment**: In our production environment, all media files are uploaded and served over HTTPS. Despite this, the warnings persisted in the Lighthouse report, affecting the best practices score.
+  - **Resolution**: To address this, I ensured that all media uploads in the development and production environments are performed over HTTPS. As an admin should be aware of this when uploading media through the admin panel in the development environment.
+  - **Impact**: These warnings do not affect the security of our application in production but are noted to explain the lower score in the best practices category.
+
+  ### Known Bugs
+
+- **Email Verification 500 Server Error**:
+  - **Description**: During the registration process, users receive a confirmation email from our email provider, Mailjet. When users click on the verification URL in the email, they are redirected back to our application but encounter a 500 server error.
+  - **Impact**: This issue prevents users from completing the email verification process, which is critical for activating their accounts.
+  - **Workaround**: Registration through social apps (e.g., Google, Facebook) works as expected and does not encounter this issue.
+  - **Current Status**: Unresolved. I'm investigating the root cause of the 500 server error and working towards a solution.
+  - **Steps to Reproduce**:
+    1. Register a new user account with an email address.
+    2. Receive the email verification email from Mailjet.
+    3. Click the verification URL in the email.
+    4. Observe the 500 server error upon redirection back to the application.
+  - **Additional Notes**: We have verified that the Mailjet configuration is correct and are currently debugging the application's email verification handler to resolve this issue.
 
 "Budget Explorer" is designed to be a user-centric application that not only helps users find affordable places to visit but also fosters a community where users can share their experiences and tips. By following the outlined features and implementation details using Django and TypeScript.
 

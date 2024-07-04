@@ -427,3 +427,7 @@ footer .container {
 #social-network li a {
   color: #fff;
 }
+
+#social-network li a:hover {
+  color: #fac34f;
+}
