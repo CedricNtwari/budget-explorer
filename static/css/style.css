@@ -19,7 +19,8 @@
 
 .post-details {
   font-size: 14px;
-  color: #777;
+  color: #188181 !important;
+  margin-bottom: 10px;
 }
 
 .map-container {
@@ -143,7 +144,7 @@ body {
 .btn {
   margin: 0.4rem 0;
   background-color: #fac34f !important;
-  color: #188181;
+  color: #fff;
   font-size: 1rem;
   flex-grow: 1;
   max-width: none;
@@ -155,7 +156,7 @@ body {
 }
 
 .btn:hover {
-  color: #fff;
+  color: #188181;
 }
 
 .brand {
@@ -240,14 +241,6 @@ body {
   color: #188181;
 }
 
-.form-row .form-control {
-  margin-bottom: 10px;
-}
-
-.form-row .btn {
-  margin-top: 10px;
-}
-
 .masthead-image {
   position: relative;
   overflow: hidden;
@@ -302,10 +295,6 @@ body {
   flex-wrap: wrap;
 }
 
-.post-details {
-  margin-bottom: 10px;
-}
-
 @media (max-width: 767px) {
   .masthead-map,
   .masthead-image {
@@ -328,11 +317,6 @@ body {
   }
 }
 
-.container-row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .profile-image {
   width: 75%;
 }
@@ -353,10 +337,6 @@ body {
 
 .post-subtitle-details {
   color: #188181;
-}
-
-.post-details {
-  color: #188181 !important;
 }
 
 .btn-signup,
@@ -409,7 +389,7 @@ body {
 }
 
 footer {
-  color: #fac34f;
+  color: #fff;
   background-color: #188181;
 }
 
