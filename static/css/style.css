@@ -163,7 +163,6 @@ body {
   font-size: 1rem;
   flex-grow: 1;
   max-width: none;
-  border-color: none !important;
   border: none !important;
   justify-content: left;
   line-height: 1.5;
@@ -279,9 +278,10 @@ body {
   height: 100%;
   width: 150%;
   background: #445261;
-  -webkit-transform: skew(15deg);
-  -moz-transform: skew(15deg);
-  transform: skew(15deg);
+  /* Vendor prefixes for cross-browser compatibility */
+  -webkit-transform: skew(15deg); /* Safari */
+  -moz-transform: skew(15deg); /* Firefox */
+  transform: skew(15deg); /* Standard */
   z-index: 100;
 }
 
