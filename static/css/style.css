@@ -143,6 +143,10 @@ body {
     display: flex;
   }
 
+  .post-details-row {
+    display: flex;
+  }
+
   body {
     font-size: 1.4rem;
   }
@@ -298,10 +302,19 @@ body {
   z-index: 100;
 }
 
+.post-details-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 @media (max-width: 767px) {
   .masthead-map,
   .masthead-image {
     flex: 1 1 100%;
+  }
+
+  .post-details-row {
+    flex-direction: column;
   }
 }
 
