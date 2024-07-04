@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -25,19 +26,19 @@ from .views import handler404, handler500
 urlpatterns = [
     path("about/", include("about.urls"), name="about-urls"),
     path("accounts/", include("allauth.urls")),
-    path('accounts/confirm-email/<str:key>/',
-         confirm_email, name='account_confirm_email'),
-    path('admin/', admin.site.urls),
-    path('contact/', include('contact.urls')),
-    path('summernote/', include('django_summernote.urls')),
-    path('', include("discover.urls"), name='discover-urls'),
+    path(
+        "accounts/confirm-email/<str:key>/", confirm_email, name="account_confirm_email"
+    ),
+    path("admin/", admin.site.urls),
+    path("contact/", include("contact.urls")),
+    path("summernote/", include("django_summernote.urls")),
+    path("", include("discover.urls"), name="discover-urls"),
 ]
 
 # Custom error handlers
-handler404 = 'codestar.views.handler404'
-handler500 = 'codestar.views.handler500'
+handler404 = "codestar.views.handler404"
+handler500 = "codestar.views.handler500"
 
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

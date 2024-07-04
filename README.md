@@ -157,7 +157,17 @@ A textual representation of the flowchart
 - JavaScript:
   - No errors were found when passing through the official [(Jshint) validator](https://jshint.com/)
 - **Python**:
-  - No issues were found when passing through the official [Pylint validator](https://www.pylint.org/)
+  - No issues were found when passing through the official [Black](https://black.readthedocs.io/en/stable/), Checked and formatted all python files
+  - Results:
+    `plaintext
+reformatted /Users/cedric/budget-explorer/discover/models.py
+reformatted /Users/cedric/budget-explorer/discover/forms.py
+reformatted /Users/cedric/budget-explorer/discover/views.py
+...
+All done! ✨ 🍰 ✨
+31 files reformatted, 12 files left unchanged.
+`
+    ![Python](/static/images/black.png)
 - **Lighthouse**:
 
   - Tested with [Lighthouse](https://developers.google.com/web/tools/lighthouse) for performance, accessibility, best practices, and SEO.

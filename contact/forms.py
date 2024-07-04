@@ -11,12 +11,18 @@ class ContactForm(forms.Form):
     - email: The email address of the user (required).
     - message: The message from the user (required).
     """
-    name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(
-        attrs={'placeholder': 'Your Name'}))
-    email = forms.EmailField(required=True, widget=forms.EmailInput(
-        attrs={'placeholder': 'Your Email'}))
-    message = forms.CharField(required=True, widget=forms.Textarea(
-        attrs={'placeholder': 'Your Message'}))
+
+    name = forms.CharField(
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={"placeholder": "Your Name"}),
+    )
+    email = forms.EmailField(
+        required=True, widget=forms.EmailInput(attrs={"placeholder": "Your Email"})
+    )
+    message = forms.CharField(
+        required=True, widget=forms.Textarea(attrs={"placeholder": "Your Message"})
+    )
 
     def clean_name(self):
         """
@@ -28,7 +34,7 @@ class ContactForm(forms.Form):
         Raises:
         - ValidationError: If the name contains any numbers.
         """
-        name = self.cleaned_data.get('name')
+        name = self.cleaned_data.get("name")
         if any(char.isdigit() for char in name):
             raise ValidationError("Name should not contain numbers.")
         return name
@@ -43,7 +49,7 @@ class ContactForm(forms.Form):
         Raises:
         - ValidationError: If the message contains fewer than two words.
         """
-        message = self.cleaned_data.get('message')
+        message = self.cleaned_data.get("message")
         if len(message.split()) < 2:
             raise ValidationError("Message should contain more than one word.")
         return message

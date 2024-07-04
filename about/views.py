@@ -21,7 +21,7 @@ def about_me(request):
     Returns:
     - `HttpResponse`: The rendered template with the context data.
     """
-    about = About.objects.all().order_by('-updated_on').first()
+    about = About.objects.all().order_by("-updated_on").first()
 
     return render(
         request,
