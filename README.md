@@ -141,13 +141,23 @@ A textual representation of the flowchart
 ### Validator Testing
 
 - HTML
-  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/#textarea)
+
+  - No errors were returned when passing the source code viewed in the browser through the official [W3C validator](https://validator.w3.org/nu/#textarea)
+
+  ![No errors html validator](/static/images/html.png)
+
 - CSS
-  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
+
+  - No errors were returned when passing the source code viewed in the browser through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
+
+  ![No errors css validator](/static/images/js.png)
+
 - Accessibility:
-  - No errors were found when passing through web dev tool lighthouse
+  - The accessibility score is high enough when passing through web dev tool Lighthouse
 - JavaScript:
   - No errors were found when passing through the official [(Jshint) validator](https://jshint.com/)
+- **Python**:
+  - No issues were found when passing through the official [Pylint validator](https://www.pylint.org/)
 - **Lighthouse**:
 
   - Tested with [Lighthouse](https://developers.google.com/web/tools/lighthouse) for performance, accessibility, best practices, and SEO.
