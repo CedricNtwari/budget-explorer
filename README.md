@@ -81,9 +81,36 @@ This project was inspired by my wife’s experience during her first days after 
 
 5. **Testing:**
 
-- Automated testing using Django's built-in testing framework.
-- Manual testing for both frontend and backend, in different browser : Chrome, Firefox, Safari.
-- Testing for functionality, usability, and responsiveness.
+This project includes both automated and manual testing to ensure the application functions as expected. The tests cover:
+
+- User authentication
+- CRUD operations for posts and places
+- Search and filtering functionality
+- Responsive design across different devices
+- Map integration and user favorites
+
+I used Django's testing framework to automate key tests. Below is a brief overview of the testing strategy:
+
+1. **Automated Testing**:
+
+   - I implemented unit tests for key features of the application, including authentication, CRUD operations, and search functionality
+   - Each feature was tested for "happy flow" (success cases) and "bad flow" (error cases)
+   - The automated tests ensure that core functionalities behave as expected under different conditions and handle errors gracefully
+
+2. **Manual Testing**:
+
+   - In addition to automated testing, I conducted manual testing to verify the application's responsiveness and usability across various browsers (Chrome, Firefox, Safari) and devices (mobile and desktop)
+   - Manual tests covered interactive elements such as form submissions, navigation, and mobile responsiveness
+
+3. **Test Coverage**:
+
+   I aimed for a high test coverage, ensuring that all critical functionalities are covered by tests
+
+- Unit Tests: Focus on key components such as views, models, and forms.
+- Integration Tests: Verify that different parts of the system work together correctly, such as user authentication, data handling, and map integration.
+- User Interface (UI) Tests: Ensure the application renders correctly on various devices and screen sizes, and that interactive elements like buttons and forms function as expected.
+
+For a detailed breakdown of all test cases, including expected results and test execution, please refer to the [TESTING.md](./TESTING.md) file.
 
 6. **Version Control:** Git, GitHub
 
