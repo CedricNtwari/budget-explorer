@@ -1,6 +1,6 @@
 ## Budget Explorer
 
-"Budget Explorer" is a full-stack web application designed to help users find and share budget-friendly places to visit within a specified budget. The application allows users to input their budget, location, and number of people, and it returns a list of recommended places that fit their criteria. Users can also save their favorite places, view them on a map, and share their experiences.
+"Budget Explorer" is a full-stack web application designed to help users find and share budget-friendly places to visit within a specified budget. Users can input their budget, location, and number of people, and the application returns a list of recommended places that meet their criteria. Users can also save their favorite places, view them on a map, and share their experiences.
 
 ## Table of Contents
 
@@ -12,13 +12,13 @@
 
 ## Project Overview
 
-This project was inspired by my wife’s experience during her first days after moving to Switzerland. She faced the challenge of browsing the internet to find budget-friendly places to visit. Budget Explorer aims to alleviate this struggle for anyone moving to a new country or simply looking to explore their surroundings on a budget. We hope it helps users connect with their new environment and find joy in discovering affordable adventures.
+This project was inspired by my wife’s experience during her first days after moving to Switzerland. She faced the challenge of browsing the internet to find budget-friendly places to visit. Budget Explorer aims to alleviate this struggle for anyone moving to a new country or simply looking to explore their surroundings on a budget. The goal is to help users connect with their new environment and discover affordable adventures.
 
 ## Key Features
 
 1. **User Authentication and Role-Based Access:**
 
-- User registration and login via email(Mailjet https://app.mailjet.com/)
+- User registration and login via email [Mailjet](https://app.mailjet.com/)
 - Login using social platforms like Google and Facebook.
 - Role-based access control (e.g., regular users vs. admin).
 
@@ -38,7 +38,7 @@ This project was inspired by my wife’s experience during her first days after 
 
 3. **Favorites:**
 
-- Users can save their favorite places.
+- Users can save favorite places for easy access.
 
 ![Favorites](/static/images/favorite.png)
 
@@ -46,7 +46,7 @@ This project was inspired by my wife’s experience during her first days after 
 
 - Interactive map displaying the locations of recommended places.
 - Map view to explore places without leaving the site.
-- User Experience (UX) and Accessibility.
+- The User Experience (UX) and Accessibility.
 
 ![Map Integration](/static/images/map.png)
 
@@ -94,8 +94,8 @@ I used Django's testing framework to automate key tests. Below is a brief overvi
 a. **Automated Testing**:
 
 - I implemented unit tests for key features of the application, including authentication, CRUD operations, and search functionality
-- Each feature was tested for "happy flow" (success cases) and "bad flow" (error cases)
-- The automated tests ensure that core functionalities behave as expected under different conditions and handle errors gracefully
+- Each feature was tested for both successful and error cases ('happy flow' and 'bad flow').
+- The automated tests ensure that core functionalities behave as expected and handle errors gracefully under different conditions.
 
 b. **Manual Testing**:
 
@@ -110,13 +110,13 @@ I aimed for a high test coverage, ensuring that all critical functionalities are
 - **Integration Tests:** Verify that different parts of the system work together correctly, such as user authentication, data handling, and map integration.
 - **User Interface (UI) Tests:** Ensure the application renders correctly on various devices and screen sizes, and that interactive elements like buttons and forms function as expected.
 
-For a detailed breakdown of all test cases, including expected results and test execution, please refer to the [TESTING.md](./TESTING.md) file.
+For detailed test case breakdowns, including expected results and test execution, refer to the [TESTING.md](./TESTING.md) file.
 
 6. **Version Control:** Git, GitHub
 
 7. **Deployment:**
 
-Deploy on a cloud platform Heroku. https://budget-explorer-b9fdc935d3db.herokuapp.com/
+The application is deployed on Heroku: Budget Explorer on [Heroku](https://budget-explorer-b9fdc935d3db.herokuapp.com/).
 
 ### Example Blog Post Data for testing purposes
 

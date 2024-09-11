@@ -10,7 +10,7 @@ This document provides a detailed breakdown of the automated and manual tests pe
 
 1. **Test Case: About Page Loads Successfully**
 
-   - **Expected**: The about page should load with a `200 OK` status when requested.
+   - **Expected**: The About page should load with a `200 OK` status when requested.
    - **Testing**: Accessed the about page via the `/about/` URL.
    - **Result**: Page loaded successfully with a `200 OK` status.
    - **Fix**: N/A (everything worked as expected).
@@ -128,7 +128,7 @@ This document provides a detailed breakdown of the automated and manual tests pe
 3. **Test Case: Invalid Contact Form Submission (Name Contains Numbers)**
 
    - **Expected**: Submitting a form where the name contains numbers should trigger a validation error and the form should be re-rendered with error messages.
-   - **Testing**: Submitted a form with an invalid name containing numbers.
+   - **Testing**: Submitted a form in which the message contained only one word.
    - **Result**: The form submission failed as expected, the page re-rendered, and the error "Name should not contain numbers" was displayed.
    - **Fix**: N/A (everything worked as expected).
 
@@ -169,8 +169,8 @@ This document provides a detailed breakdown of the automated and manual tests pe
 
 1. Test Case: Form Field Validation on Contact Page
 
-   - **Expected**: Each field (name, email, message) should be validated correctly (e.g., name must not contain numbers, message must be longer than one word).
-   - **Testing**: Manually entered invalid data (e.g., name with numbers, message with one word) and verified that error messages appeared.
+   - **Expected**: Each field (name, email, message) should be validated correctly (e.g., the name must not contain numbers, and the message must be longer than one word).
+   - **Testing**: Manually entered invalid data (e.g., a name with numbers or a message with only one word) and verified that error messages were displayed.
    - **Result**: Validation errors were correctly displayed on the contact form for invalid data.
    - **Fix**: N/A (everything worked as expected).
 
@@ -184,7 +184,7 @@ This document provides a detailed breakdown of the automated and manual tests pe
 3. Test Case: Browser Compatibility
 
    - **Expected**: The contact form should work correctly across different browsers (Chrome, Firefox, Safari).
-   - **Testing**: Manually tested the contact form submission on multiple browsers to verify consistent functionality.
+   - **Testing**: Tested the contact form on multiple browsers to ensure consistent functionality.
    - **Result**: The form worked as expected on all tested browsers.
    - **Fix**: N/A
 
@@ -395,7 +395,7 @@ This document provides a detailed breakdown of the automated and manual tests pe
 
    - **Expected**: The map should render properly on the post list and detail pages, displaying the locations of the posts.
 
-   - **Testing**: Manually opened the map to check if the locations were marked correctly on the map.
+   - **Testing**: Manually opened the map to check if the locations were marked correctly.
 
    - **Result**: The map and location markers were displayed correctly.
 
