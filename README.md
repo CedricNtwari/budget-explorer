@@ -1,6 +1,6 @@
 ## Budget Explorer
 
-"Budget Explorer" is a full-stack web application designed to help users find and share budget-friendly places to visit within a specified budget. Users can input their budget, location, and number of people, and the application returns a list of recommended places that meet their criteria. Users can also save their favorite places, view them on a map, and share their experiences.
+"Budget Explorer" is a full-stack web application designed to help users find and share budget-friendly places to visit within a specified budget. Users can input their budget, location, and number of people, and the application returns a list of recommended places that meet their criteria. Users can also save their favorite places, view them on a map, and share their experiences with others.
 
 ## Table of Contents
 
@@ -12,109 +12,196 @@
 
 ## Project Overview
 
-This project was inspired by my wife’s experience during her first days after moving to Switzerland. She faced the challenge of browsing the internet to find budget-friendly places to visit. Budget Explorer aims to alleviate this struggle for anyone moving to a new country or simply looking to explore their surroundings on a budget. The goal is to help users connect with their new environment and discover affordable adventures.
+This project was inspired by my wife’s experience when she first moved to Switzerland. She faced challenges browsing the internet to find budget-friendly places to visit. **Budget Explorer** is designed to make this easier for anyone moving to a new country or simply looking to explore their surroundings on a budget. The goal is to help users connect with their new environment and discover affordable adventures.
 
 ## Key Features
 
 1. **User Authentication and Role-Based Access:**
 
-- User registration and login via email [Mailjet](https://app.mailjet.com/)
-- Login using social platforms like Google and Facebook.
-- Role-based access control (e.g., regular users vs. admin).
+   - User registration and login via email [Mailjet](https://app.mailjet.com/)
+   - Login using social platforms like Google and Facebook.
+   - Role-based access control (e.g., regular users vs. admin).
 
 ![User Authentication](/static/images/authentication-.png)
 ![User Authentication](/static/images/authentication..png)
 
 2. **Search, Filter and near me:**
 
-- Users can input their location, budget range, and number of people.
-- The application provides a list of places that fit the user's criteria.
-- Advanced filters like type of place, post title, or location.
-- Users can filter posts to find them easily by title or location.
-- The posts listing page updates to display only the posts that match the selected filters.
-- "Near me" feature to filter places within a certain distance from the user's current location.
+   - Users can input their location, budget range, and number of people.
+   - The application provides a list of places that fit the user's criteria.
+   - Advanced filters like type of place, post title, or location.
+   - Users can filter posts to find them easily by title or location.
+   - The posts listing page updates to display only the posts that match the selected filters.
+   - "Near me" feature to filter places within a certain distance from the user's current location.
 
 ![Search, Filter and near me](/static/images/search.png)
 
 3. **Favorites:**
 
-- Users can save favorite places for easy access.
+   - Users can save favorite places for easy access.
 
 ![Favorites](/static/images/favorite.png)
 
 4. **Map Integration:**
 
-- Interactive map displaying the locations of recommended places.
-- Map view to explore places without leaving the site.
-- The User Experience (UX) and Accessibility.
+   - Interactive map displaying the locations of recommended places.
+   - Map view to explore places without leaving the site.
+   - The User Experience (UX) and Accessibility.
 
 ![Map Integration](/static/images/map.png)
 
 5. **Intuitive and responsive design.**
 
-- Clear feedback on user actions (e.g., adding to favorites, leave a comment, users can update their infos).
+   - Clear feedback on user actions (e.g., adding to favorites, leave a comment, users can update their infos).
 
 ![Intuitive and responsive design](/static/images/Intuitive.png)
 ![users can update their infos](/static/images/user.png)
 
 ## Implementation Details
 
-1. **Frontend:**
+1.  **Frontend:**
 
-- HTML, CSS, Bootstrap for responsiveness and TypeScript for the responsive and interactive user interface.
-- Use Django templates to render dynamic content.
-  Consider using a front-end framework/library like .
+    - **Technologies:** HTML, CSS, Bootstrap for responsiveness and JavaScript for interactivity.
 
-2. **Backend:**
+    - **Templates:** Django templates are used to render dynamic content .
 
-- Python with Django for handling backend logic, authentication, and database management.
+2.  **Backend:**
 
-3. **Database:**
+    - **Technologies:** Python with Django for handling backend logic, authentication, and database management.
 
-- Relational database: PostgreSQL.
-- Django ORM to define models for users, places, reviews, favorites, etc.
+3.  **Database:**
 
-4. **Map Integration:**
+    - **Database:** Relational database: PostgreSQL.
+    - **Django ORM:** Used to define models for users, places, reviews, favorites, etc.
 
-- Use a mapping API like Google Maps to display locations.
-- Integrate the map into Django templates.
+4.  **Map Integration:**
 
-5. **Testing:**
+    - Google Maps API is used to display locations on an interactive map.
 
-This project includes both automated and manual testing to ensure the application functions as expected. The tests cover:
+5.  **Testing:**
 
-- User authentication
-- CRUD operations for posts and places
-- Search and filtering functionality
-- Responsive design across different devices
-- Map integration and user favorites
+    5.1. **Automated Testing**:
 
-I used Django's testing framework to automate key tests. Below is a brief overview of the testing strategy:
+    - Unit tests cover key features such as user authentication, CRUD operations, and search functionality.
 
-a. **Automated Testing**:
+    - Both "happy flow" (success) and "bad flow" (failure/error cases) are tested.
 
-- I implemented unit tests for key features of the application, including authentication, CRUD operations, and search functionality
-- Each feature was tested for both successful and error cases ('happy flow' and 'bad flow').
-- The automated tests ensure that core functionalities behave as expected and handle errors gracefully under different conditions.
+    - Django’s testing framework is used to ensure core functionalities behave as expected.
 
-b. **Manual Testing**:
+    5.2. **Manual Testing**:
 
-- In addition to automated testing, I conducted manual testing to verify the application's responsiveness and usability across various browsers (Chrome, Firefox, Safari) and devices (mobile and desktop)
-- Manual tests covered interactive elements such as form submissions, navigation, and mobile responsiveness
+    - The application was manually tested for responsiveness and usability across different browsers (Chrome, Firefox, Safari) and devices (mobile and desktop).
+    - Manual tests were conducted to ensure the functionality of interactive elements, such as form submissions and navigation.
 
-c. **Test Coverage**:
+    5.3. **Test Coverage**:
 
-I aimed for a high test coverage, ensuring that all critical functionalities are covered by tests
+    - **Unit Tests:** Key components such as views, models, and forms are tested.
+    - **Integration Tests:** Ensure that different system components work together correctly, such as user authentication, data handling, and map integration.
+    - **User Interface (UI) Tests:** Ensure the application renders correctly on various devices and screen sizes.
 
-- **Unit Tests:** Focus on key components such as views, models, and forms.
-- **Integration Tests:** Verify that different parts of the system work together correctly, such as user authentication, data handling, and map integration.
-- **User Interface (UI) Tests:** Ensure the application renders correctly on various devices and screen sizes, and that interactive elements like buttons and forms function as expected.
+    For detailed test results,refer to the [TESTING.md](./TESTING.md) file.
 
-For detailed test case breakdowns, including expected results and test execution, refer to the [TESTING.md](./TESTING.md) file.
+6.  **Version Control:** Git, GitHub
 
-6. **Version Control:** Git, GitHub
+7.  **Deployment to Heroku:**
 
-7. **Deployment:**
+    The application is deployed to Heroku, and here are the steps to set up the project:
+
+    7.1. **Set Up a Heroku Account:**
+
+    - Create an account at at [Heroku](https://signup.heroku.com/). - Optionally, install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+
+
+    7.2. **Create a New Heroku App:**
+
+    - Log in to Heroku and create a new app.
+    - Choose a unique name and select a region (United States or Europe).
+
+    7.3. **Set Up External PostgreSQL Database:**
+
+    - If you're using an external PostgreSQL database instead of Heroku’s built-in Postgres add-on, follow these steps:
+
+    - Ensure that you have the PostgreSQL database already set up with the necessary credentials (host, database name, username, and password).
+    - In your **env.py**, set the **DATABASE_URL** to the appropriate connection string.
+
+    - You do not need to add the Heroku Postgres add-on in this case, but you must set the DATABASE_URL environment variable in Heroku’s Config Vars (Step 7.5).
+
+    7.4. **Connect Your App to GitHub:**
+
+    - In the Deploy tab on Heroku, select GitHub as your deployment method and connect your GitHub repository.
+
+    7.5. **Set Environment Variables:**
+
+    Set all environment variables in Heroku.
+
+    - Go to the **Settings** tab in Heroku & Click **Reveal Config Vars** and add the following variables:
+
+    ```
+    DATABASE_URL=your_database_url
+    SECRET_KEY=your_secret_key
+    CLOUDINARY_URL=your_cloudinary_url
+    MAILJET_API_KEY=your_mailjet_api_key
+    MAILJET_API_SECRET=your_mailjet_api_secret
+    GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+    GOOGLE_MAPS_MAP_ID=your_google_maps_map_id
+    GOOGLE_CLIENT_ID=your_google_client_id
+    GOOGLE_CLIENT_SECRET=your_google_client_secret
+    PROD_GOOGLE_REDIRECT_URI=https://<your-app-name>.herokuapp.com/accounts/google/login/callback/
+    FACEBOOK_APP_ID=your_facebook_app_id
+    FACEBOOK_APP_SECRET=your_facebook_app_secret
+    PROD_FACEBOOK_REDIRECT_URI=https://<your-app-name>.herokuapp.com/accounts/facebook/login/callback/
+    ENVIRONMENT=production
+    DEBUG=False
+    ```
+
+    7.6. **Prepare the Application for Deployment:**
+
+    - Ensure you have a Procfile that tells Heroku how to run your app
+
+    ```
+    web: gunicorn app_name.wsgi
+    ```
+
+    - Update your **requirements.txt** file by running:
+
+    ```
+    pip freeze > requirements.txt
+    ```
+
+    - Heroku doesn't serve static files by default. Configure your **settings.py**:
+
+    ```
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    ```
+
+    - Ensure your migrations are up to date:
+
+    ```
+    python manage.py makemigrations
+    python manage.py migrate
+    ```
+
+    7.7.**Deploy the Application:**
+
+    - In the **Deploy** tab on Heroku, select the branch to deploy and click **Deploy Branch**.
+
+    7.8.**Create a Superuser (Optional):**
+
+    -To access the Django admin panel, create a **superuser**:
+
+    ```
+    heroku run python manage.py createsuperuser
+    ```
+
+    7.9.**Open Your App:**
+
+   - Visit app at:
+
+    ```
+    https://<your-app-name>.herokuapp.com
+    ```
+
 
 The application is deployed on Heroku: Budget Explorer on [Heroku](https://budget-explorer-b9fdc935d3db.herokuapp.com/).
 
@@ -229,7 +316,3 @@ All done! ✨ 🍰 ✨
 "Budget Explorer" is designed to be a user-centric application that not only helps users find affordable places to visit but also fosters a community where users can share their experiences and tips. By following the outlined features and implementation details using Django and TypeScript.
 
 **Happy coding!**
-
-```
-
-```
