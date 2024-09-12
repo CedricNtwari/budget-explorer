@@ -1,14 +1,15 @@
 ## Budget Explorer
 
-"Budget Explorer" is a full-stack web application designed to help users find and share budget-friendly places to visit within a specified budget. Users can input their budget, location, and number of people, and the application returns a list of recommended places that meet their criteria. Users can also save their favorite places, view them on a map, and share their experiences with others.
+"Budget Explorer" is a full-stack web application designed to help users find and share budget-friendly places to visit within a specified budget. Users can enter their budget, location, and number of people, and the application returns a list of recommended places that meet their criteria. Users can also save their favorite places, view them on a map, and share their experiences with others.
 
 ## Table of Contents
 
 1. [Project Overview](#project-overview)
 2. [Key Features](#key-features)
 3. [Implementation Details](#implementation-details)
-4. [User Stories and Agile Methodology](#user-stories-and-agile-methodology)
-5. [Database Schema](#database-schema)
+4. [Design Process](#design-process)
+5. [User Stories and Agile Methodology](#user-stories-and-agile-methodology)
+6. [Database Schema](#database-schema)
 
 ## Project Overview
 
@@ -19,7 +20,7 @@ This project was inspired by my wife’s experience when she first moved to Swit
 1. **User Authentication and Role-Based Access:**
 
    - User registration and login via email [Mailjet](https://app.mailjet.com/)
-   - Login using social platforms like Google and Facebook.
+   - Users can log in using social platforms like Google and Facebook.
    - Role-based access control (e.g., regular users vs. admin).
 
 ![User Authentication](/static/images/authentication-.png)
@@ -46,7 +47,7 @@ This project was inspired by my wife’s experience when she first moved to Swit
 
    - Interactive map displaying the locations of recommended places.
    - Map view to explore places without leaving the site.
-   - The User Experience (UX) and Accessibility.
+   - Focus on User Experience (UX) and Accessibility.
 
 ![Map Integration](/static/images/map.png)
 
@@ -112,7 +113,7 @@ This project was inspired by my wife’s experience when she first moved to Swit
     - Create an account at at [Heroku](https://signup.heroku.com/). - Optionally, install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
 
 
-    7.2. **Create a New Heroku App:**
+    7.2. **Create a new Heroku App:**
 
     - Log in to Heroku and create a new app.
     - Choose a unique name and select a region (United States or Europe).
@@ -122,7 +123,7 @@ This project was inspired by my wife’s experience when she first moved to Swit
     - If you're using an external PostgreSQL database instead of Heroku’s built-in Postgres add-on, follow these steps:
 
     - Ensure that you have the PostgreSQL database already set up with the necessary credentials (host, database name, username, and password).
-    - In your **env.py**, set the **DATABASE_URL** to the appropriate connection string.
+    - In your **env.py**, set the **DATABASE_URL** to the correct connection string.
 
     - You do not need to add the Heroku Postgres add-on in this case, but you must set the DATABASE_URL environment variable in Heroku’s Config Vars (Step 7.5).
 
@@ -233,6 +234,33 @@ To add a new blog post, you can use the following JSON structure as an example. 
 }
 ```
 
+## Design Process
+
+The design of "Budget Explorer" is centered around providing a simple and intuitive user experience for individuals who are looking for budget-friendly travel destinations. The core design goals were:
+
+1. **Simplicity**: The user interface is designed to be easy to navigate, with minimal distractions. The goal was to allow users to input information quickly and get the results they need without unnecessary complexity.
+
+2. **Responsiveness**: Since users might access the platform from various devices, a responsive design was key. The layout adapts to different screen sizes, ensuring that the user experience remains consistent on desktop, tablet, and mobile devices.
+
+3. **Visual Appeal**: The color scheme and typography were chosen to create a clean and professional look. The use of images, especially in the recommendations and map sections, was emphasized to make the experience more engaging.
+
+4. **User Flow**: The main user journey, from entering budget information to viewing travel recommendations and saving favorites, was mapped out to ensure a logical and smooth progression.
+
+5. **Mobile-First Approach**: By focusing on mobile usability first, the interface delivers a consistent experience across devices. The application was designed with mobile users in mind, ensuring a responsive design that adapts seamlessly from mobile phones to tablets and desktop screens.
+
+6. **Wireframes**: During the early stages of development, wireframes were created for key pages, including the homepage, about page, contact page, sign-up, and login pages. These wireframes were designed for desktop, tablet, and mobile views to ensure responsiveness and usability.
+
+[View Budget Explorer Design on Figma](https://www.figma.com/design/slFAyq0SK0UxFEt3CM2g7H/Budget-Explorer?node-id=0-1&node-type=canvas&t=qGdoeZAT4Pk8XC0G-0)
+
+### Color Palette
+
+The chosen color palette reflects the goal of creating a clean, professional, and visually appealing interface. The following colors were used:
+
+- **Primary Color:** #188181
+- **Secondary Color:** #FAC34F
+- **Background Color:** #F9FAFC
+- **Text Color:** #212529
+
 ## User Stories and Agile Methodology
 
 - Defined epics and broke them down into user stories and tasks.
@@ -296,7 +324,7 @@ All done! ✨ 🍰 ✨
   - **Trust and Safety**: The Lighthouse report showed 7 insecure requests related to Cloudinary URLs.
   - **Reason**: Cloudinary hosts our media files, and during development, some images might be uploaded via HTTP. These requests are automatically upgraded to HTTPS by Cloudinary. However, Lighthouse still flags these as issues.
   - **Production Environment**: In our production environment, all media files are uploaded and served over HTTPS. Despite this, the warnings persisted in the Lighthouse report, affecting the best practices score.
-  - **Resolution**: To address this, I ensured that all media uploads in the development and production environments are performed over HTTPS. As an admin should be aware of this when uploading media through the admin panel in the development environment.
+  - **Resolution**: To address this, I ensured that all media uploads in both development and production environments are performed over HTTPS. Administrators should be aware of this when uploading media through the admin panel in the development environment.
   - **Impact**: These warnings do not affect the security of our application in production but are noted to explain the lower score in the best practices category.
 
   ### Known Bugs
@@ -313,6 +341,6 @@ All done! ✨ 🍰 ✨
     4. Observe the 500 server error upon redirection back to the application.
   - **Additional Notes**: We have verified that the Mailjet configuration is correct and are currently debugging the application's email verification handler to resolve this issue.
 
-"Budget Explorer" is designed to be a user-centric application that not only helps users find affordable places to visit but also fosters a community where users can share their experiences and tips. By following the outlined features and implementation details using Django and TypeScript.
+**Budget Explorer** is designed to be a user-centric application that helps users find affordable places to visit while fostering a community where they can share their experiences and tips.
 
 **Happy coding!**
