@@ -263,8 +263,58 @@ The chosen color palette reflects the goal of creating a clean, professional, an
 
 ## User Stories and Agile Methodology
 
-- Defined epics and broke them down into user stories and tasks.
-- Track project progress, GitHub Projects: <a href="https://github.com/users/CedricNtwari/projects/3/views/1" target="_blank">Project Board</a>
+The development of **Budget Explorer** was managed using Agile methodology, with tasks tracked on a GitHub Project Board. You can view the complete list of user stories, and progress here:
+
+- **Track project progress**: [GitHub Project Board](https://github.com/users/CedricNtwari/projects/3/views/1)
+
+All user stories were organized and managed according to the **MOSCOW** prioritization technique to ensure the focus on the "Must Haves" while keeping flexibility for "Should Haves" and "Could Haves."
+
+I followed Agile methodology to ensure a structured and iterative approach to building the application. The project was divided into five sprints, each lasting **two weeks**, with a clear set of tasks and goals for each sprint.
+
+### Sprint Breakdown:
+
+**Sprint 1:** User Authentication & Basic UI Setup
+
+- Initial wireframes created for homepage, about page, and user profile.
+- Implemented user registration, login (including social sign-ins), and authentication system.
+- Set up homepage structure, footer and navigation.
+- Created base models (User, Post, Comment).
+
+**Sprint 2:** Search, Filter, and Post CRUD Operations
+
+- Developed the functionality for searching and filtering posts.
+- Completed CRUD operations for places, posts, and comments.
+- Integrated Google Maps to display places on a map.
+
+![Sprint board 1 & 2](/static/images/sprint1.png)
+
+**Sprint 3:** User Profile, Favorites, and Comments
+
+- Implemented user profile functionality (including profile picture uploads).
+- Created favorites system, allowing users to save their favorite places.
+- Added commenting functionality on places.
+
+**Sprint 4:** Testing, and Final Features
+
+- Automated tests for key features.
+- Manual testing across multiple browsers (Chrome, Firefox, Safari) and devices (mobile, tablet, desktop).
+
+![Sprint board 3 & 4](/static/images/sprint2.png)
+
+**Sprint 5:** Final Testing and Deployment
+
+- Conducted final rounds of testing.
+- Deployed the application to Heroku.
+- Documented the full deployment process.
+- Addressed any remaining UI/UX feedback and investigated bugs (including the email verification issue).
+
+![Sprint board 5](/static/images/sprint3.png)
+
+### Screenshot of Agile Board
+
+- Since **Monday.com** restricts public access, I’ve included a screenshot of my sprint progress and task breakdown for transparency:
+
+![Monday board](/static/images/sprint4.png)
 
 ## Database Schema
 
