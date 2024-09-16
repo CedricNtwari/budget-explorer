@@ -1,5 +1,10 @@
 .navbar {
   padding: 0;
+  font-size: medium;
+}
+
+.navbar-brand {
+  margin: 0;
 }
 
 .post-card {
@@ -430,7 +435,7 @@ body {
 
 footer {
   color: #fff;
-  font-size: medium;
+  font-size: small;
   background-color: #188181;
 }
 
