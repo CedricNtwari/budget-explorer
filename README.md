@@ -271,6 +271,8 @@ All user stories were organized and managed according to the **MOSCOW** prioriti
 
 I followed Agile methodology to ensure a structured and iterative approach to building the application. The project was divided into five sprints, each lasting **two weeks**, with a clear set of tasks and goals for each sprint.
 
+Each user story was further broken down into tasks, with detailed descriptions, acceptance criteria, and assigned points based on their complexity and importance. These were prioritized to ensure effective sprint planning.
+
 ### Sprint Breakdown:
 
 **Sprint 1:** User Authentication & Basic UI Setup
