@@ -3,7 +3,9 @@
   <div class="container">
     <div class="row g-0">
       <div class="col-md-6 masthead-text">
-        <button onclick="history.back()" class="btn btn-secondary mb-3">Go Back</button>
+        <button onclick="history.back()" class="btn btn-secondary mb-3">
+          <i class="fas fa-arrow-left"></i> Go Back
+        </button>
         <h1 class="post-title">{{ post.title }}</h1>
         <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
       </div>
@@ -63,8 +65,12 @@
           {% if not comment.approved and comment.author == user %}
           <p class="approval">This comment is awaiting approval</p>
           {% endif %} {% if user.is_authenticated and comment.author == user %}
-          <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-          <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+          <button class="btn btn-delete" comment_id="{{ comment.id }}">
+            <i class="fas fa-trash"></i> Delete
+          </button>
+          <button class="btn btn-edit" comment_id="{{ comment.id }}">
+            <i class="fas fa-edit"></i> Edit
+          </button>
           {% endif %}
         </div>
         <!-- Our for loop ends here -->
@@ -94,7 +100,9 @@
       <p>Posting as: {{ user.username }}</p>
       <form id="commentForm" method="post" style="margin-top: 1.3em">
         {{ comment_form | crispy }} {% csrf_token %}
-        <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
+        <button id="submitButton" type="submit" class="btn btn-signup btn-lg">
+          <i class="fas fa-check"></i> Submit
+        </button>
       </form>
       {% else %}
       <p>Log in to leave a comment</p>

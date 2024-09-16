@@ -90,7 +90,7 @@
                 class="nav-link {% if request.path == about_url %}active{% endif %}"
                 aria-current="page"
                 href="{% url 'about' %}"
-                >About</a
+                ><i class="fas fa-info-circle"></i> About</a
               >
             </li>
             <li class="nav-item">
@@ -98,7 +98,7 @@
                 class="nav-link {% if request.path == contact_url %}active{% endif %}"
                 aria-current="page"
                 href="{% url 'contact' %}"
-                >Contact</a
+                ><i class="fas fa-envelope"></i> Contact</a
               >
             </li>
             {% if user.is_authenticated %}
@@ -107,7 +107,7 @@
                 class="nav-link {% if request.path == user_profile_url %}active{% endif %}"
                 aria-current="page"
                 href="{% url 'user_profile' %}"
-                >Profile</a
+                ><i class="fas fa-user"></i> Profile</a
               >
             </li>
             <li class="nav-item">
@@ -115,7 +115,7 @@
                 class="nav-link {% if request.path == logout_url %}active{% endif %}"
                 aria-current="page"
                 href="{% url 'account_logout' %}"
-                >Logout</a
+                ><i class="fas fa-sign-out-alt"></i> Logout</a
               >
             </li>
             {% else %}
@@ -124,7 +124,7 @@
                 class="nav-link {% if request.path == signup_url %}active{% endif %}"
                 aria-current="page"
                 href="{% url 'account_signup' %}"
-                >Register</a
+                ><i class="fas fa-user-plus"></i> Register</a
               >
             </li>
             <li class="nav-item">
@@ -132,7 +132,7 @@
                 class="nav-link {% if request.path == login_url %}active{% endif %}"
                 aria-current="page"
                 href="{% url 'account_login' %}"
-                >Login</a
+                ><i class="fas fa-sign-in-alt"></i> Login</a
               >
             </li>
             {% endif %}

@@ -5,6 +5,14 @@
   margin-bottom: 16px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .post-title {
@@ -432,4 +440,27 @@ footer .container {
 
 #social-network li a:hover {
   color: #fac34f;
+}
+
+/* Add icons before the placeholders */
+input[name="title"]::placeholder {
+  content: "\f002";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 10px;
+}
+
+input[name="location"]::placeholder {
+  content: "\f3c5";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 10px;
+}
+
+input[name="min_budget"]::placeholder,
+input[name="max_budget"]::placeholder {
+  content: "\f155";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 10px;
 }

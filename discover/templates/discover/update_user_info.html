@@ -3,7 +3,9 @@
   <h1>Update User Information</h1>
   <form method="post">
     {% csrf_token %} {{ user_form|crispy }}
-    <button type="submit" class="btn btn-primary mt-3">Update Information</button>
+    <button type="submit" class="btn btn-primary mt-3">
+      <i class="fas fa-check"></i> Update Information
+    </button>
   </form>
 </div>
 {% endblock %}
