@@ -1,3 +1,7 @@
+.navbar {
+  padding: 0;
+}
+
 .post-card {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -177,10 +181,16 @@ body {
   line-height: 1.5;
   border-radius: 35px;
   letter-spacing: 1px;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .btn:hover {
-  color: #fff;
+  background-color: #f5b236 !important;
+  color: #ffffff !important;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .brand {
@@ -440,27 +450,4 @@ footer .container {
 
 #social-network li a:hover {
   color: #fac34f;
-}
-
-/* Add icons before the placeholders */
-input[name="title"]::placeholder {
-  content: "\f002";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  margin-right: 10px;
-}
-
-input[name="location"]::placeholder {
-  content: "\f3c5";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  margin-right: 10px;
-}
-
-input[name="min_budget"]::placeholder,
-input[name="max_budget"]::placeholder {
-  content: "\f155";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  margin-right: 10px;
 }
