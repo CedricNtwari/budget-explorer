@@ -89,7 +89,7 @@
       <i class="fa fa-heart"></i> Favorite
     </a>
     {% else %}
-    <p>Please <a href="{% url 'account_login' %}">login</a> to favorite this post.</p>
+    <p>Please <a href="{% url 'account_login' %}">login</a> to leave a comment.</p>
     {% endif %}
   </div>
   <!-- Creating New Comments -->
@@ -105,7 +105,7 @@
         </button>
       </form>
       {% else %}
-      <p>Log in to leave a comment</p>
+      <span></span>
       {% endif %}
     </div>
   </div>
