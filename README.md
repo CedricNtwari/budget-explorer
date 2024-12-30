@@ -89,12 +89,12 @@ This project was inspired by my wife’s experience when she first moved to Swit
 
     - Django’s testing framework is used to ensure core functionalities behave as expected.
 
-    5.2. **Manual Testing**:
+      5.2. **Manual Testing**:
 
     - The application was manually tested for responsiveness and usability across different browsers (Chrome, Firefox, Safari) and devices (mobile and desktop).
     - Manual tests were conducted to ensure the functionality of interactive elements, such as form submissions and navigation.
 
-    5.3. **Test Coverage**:
+      5.3. **Test Coverage**:
 
     - **Unit Tests:** Key components such as views, models, and forms are tested.
     - **Integration Tests:** Ensure that different system components work together correctly, such as user authentication, data handling, and map integration.
@@ -112,13 +112,12 @@ This project was inspired by my wife’s experience when she first moved to Swit
 
     - Create an account at at [Heroku](https://signup.heroku.com/). - Optionally, install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
 
-
-    7.2. **Create a new Heroku App:**
+      7.2. **Create a new Heroku App:**
 
     - Log in to Heroku and create a new app.
     - Choose a unique name and select a region (United States or Europe).
 
-    7.3. **Set Up External PostgreSQL Database:**
+      7.3. **Set Up External PostgreSQL Database:**
 
     - If you're using an external PostgreSQL database instead of Heroku’s built-in Postgres add-on, follow these steps:
 
@@ -127,11 +126,11 @@ This project was inspired by my wife’s experience when she first moved to Swit
 
     - You do not need to add the Heroku Postgres add-on in this case, but you must set the DATABASE_URL environment variable in Heroku’s Config Vars (Step 7.5).
 
-    7.4. **Connect Your App to GitHub:**
+      7.4. **Connect Your App to GitHub:**
 
     - In the Deploy tab on Heroku, select GitHub as your deployment method and connect your GitHub repository.
 
-    7.5. **Set Environment Variables:**
+      7.5. **Set Environment Variables:**
 
     Set all environment variables in Heroku.
 
@@ -187,7 +186,7 @@ This project was inspired by my wife’s experience when she first moved to Swit
 
     - In the **Deploy** tab on Heroku, select the branch to deploy and click **Deploy Branch**.
 
-    7.8.**Create a Superuser (Optional):**
+      7.8.**Create a Superuser (Optional):**
 
     -To access the Django admin panel, create a **superuser**:
 
@@ -197,12 +196,11 @@ This project was inspired by my wife’s experience when she first moved to Swit
 
     7.9.**Open Your App:**
 
-   - Visit app at:
+- Visit app at:
 
-    ```
-    https://<your-app-name>.herokuapp.com
-    ```
-
+  ```
+  https://<your-app-name>.herokuapp.com
+  ```
 
 The application is deployed on Heroku: Budget Explorer on [Heroku](https://budget-explorer-b9fdc935d3db.herokuapp.com/).
 
@@ -379,7 +377,7 @@ All done! ✨ 🍰 ✨
   - **Resolution**: To address this, I ensured that all media uploads in both development and production environments are performed over HTTPS. Administrators should be aware of this when uploading media through the admin panel in the development environment.
   - **Impact**: These warnings do not affect the security of our application in production but are noted to explain the lower score in the best practices category.
 
-  ### Known Bugs
+  ### Known-Bugs
 
 - **Email Verification 500 Server Error**:
   - **Description**: During the registration process, users receive a confirmation email from our email provider, Mailjet. When users click on the verification URL in the email, they are redirected back to our application but encounter a 500 server error.
